@@ -7,3 +7,8 @@ Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. L
 Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une "pure JS library", comme expliqué à la fin du "Pomax Guide". Ce choix a été dicté par le fait que je suis un développeur Javascript, et non Java, et que je souhaite utiliser ProcessingJS de cette manière. Mais vous pouvez utiliser ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de trouver le mode qui vous convient le mieux.
 
 Pour les tests relatifs à la 3D, j'ai repris et adapté plusieurs sketchs tirés d'un très bon livre de Jan Vantomme sur Processing2 (cf. référence en bas de page). J'ai ajouté à certains de ces sketchs quelques fonctionnalités telles que zoom, et changement de rendu additionnel.
+
+ATTENTION : pour faire fonctionner le projet, téléchargez le localement et ouvrez la page index.html (qui se trouve dans le répertoire "project") avec votre navigateur. Cette page est le point d'entrée vers les différents exemples.
+
+Lien vers le "Pomax Guide" :
+http://processingjs.org/articles/PomaxGuide.html

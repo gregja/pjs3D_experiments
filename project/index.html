@@ -2,56 +2,70 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Test 2D et 3D avec ProcessingJS</title>
+  <title>Expériences 2D et 3D avec ProcessingJS</title>
+  <link rel="stylesheet" href="w3.css">
   <script src="processing.js"></script>
 </head>
 <body>
-  <h2>C'est quoi ce projet de bricolo ?!?!</h2>
-<p>
-Le but de ce projet personnel et assez expérimental est de tester la bonne portabilité du code Processing
-vers ProcessingJS. <br>
-Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. Les résultats obtenus sont très encourageants,
-et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent
-comment porter ces projets sur le web (sachant que le projet concurrent de ProcessingJS,
-n'atteint pas un aussi bon niveau de portabilité pour la 3D, à mon grand regret d'ailleurs).
-<br></p>
-<p>
-  Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une
-  "pure JS library", comme expliqué à la fin du
-   <a href="http://processingjs.org/articles/PomaxGuide.html" target="_blank">"Pomax Guide"</a>.
-  Ce choix a été dicté par le fait que je suis un développeur Javascript, et non Java,
-  et que je souhaite utiliser ProcessingJS de cette manière. Mais vous pouvez utiliser
-  ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
-  trouver le mode qui vous convient le mieux.
-</p>
-<p>Pour les tests relatifs à la 3D, j'ai repris et adapté plusieurs sketchs tirés
-  d'un très bon livre de Jan Vantomme sur Processing2 (cf. référence en bas de page).
-J'ai ajouté à certains de ces sketchs quelques fonctionnalités telles que zoom,
-et changement de rendu additionnel.</p>
+<div class="w3-container w3-blue">
+     <h2>Expériences 2D et 3D avec ProcessingJS</h2>
+ </div>
+ <div class="w3-container">
+     <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+       <p>
+       Le but de ce projet personnel et assez expérimental est de tester la bonne portabilité du code Processing
+       vers ProcessingJS. <br>
+       Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. Les résultats obtenus sont très encourageants,
+       et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent
+       comment porter ces projets sur le web (sachant que le projet concurrent de ProcessingJS,
+       n'atteint pas un aussi bon niveau de portabilité pour la 3D, à mon grand regret d'ailleurs).
+       <br></p>
+       <p>
+         Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une
+         "pure JS library", comme expliqué à la fin du
+          <a href="http://processingjs.org/articles/PomaxGuide.html" target="_blank">"Pomax Guide"</a>.
+         Ce choix a été dicté par le fait que je suis un développeur Javascript, et non Java,
+         et que je souhaite utiliser ProcessingJS de cette manière. Mais vous pouvez utiliser
+         ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
+         trouver le mode qui vous convient le mieux.
+       </p>
+       <p>Pour les tests relatifs à la 3D, j'ai repris et adapté plusieurs sketchs tirés
+         d'un très bon livre de Jan Vantomme sur Processing2 (cf. référence en bas de page).
+       J'ai ajouté à certains de ces sketchs quelques fonctionnalités telles que zoom,
+       et changement de rendu additionnel.</p>
 
-  <br>
-  <ul>
-    <li>------ ProcessingJS et la 2D ------</li>
-    <li><a href="sketch01.html">Sinusoïdes</a></li>
-    <li><a href="sketch02.html">Course de carrés (V1)</a></li>
-    <li><a href="sketch03.html">Course de carrés (V2)</a></li>
-    <li><a href="sketch04.html">SpinArm & SpinSpots</a></li>
-    <li>------ ProcessingJS et la 3D ------</li>
-    <li><a href="sketch05.html">3D exemple 1 - cubes fixes</a></li>
-    <li><a href="sketch06.html">livre volant</a></li>
-    <li><a href="sketch07.html">4 cubes en mouvement (*)</a></li>
-    <li><a href="sketch08.html">Primitives 3D (*)</a></li>
-    <li><a href="sketch09.html">SphereDetail & souris</a></li>
-    <li><a href="sketch10.html">Lights & Textures 3D (*)</a></li>
-    <li><a href="sketch11.html">Cylindres (*)</a></li>
-    <li><a href="sketch12.html">Multicubes v1 (mix 2D & 3D) (*)</a></li>
-    <li><a href="sketch13.html">Multicubes v2 (no mix & zoom) (*)</a></li>
-    <li><a href="sketch14.html">Triangle & Quad strips (*)</a></li>
-    <li><a href="sketch15.html">3D Camera (*)</a></li>
-    <li><a href="sketch16.html">Mapping de textures (*)</a></li>
-  </ul>
-<br><br><br>
-<p>(*) libre adaptation d'un exemple tiré du livre de Jan Vantomme : <br>
-"Processing 2: Creative Programming Cookbook", Packt Publishing 2012</p>
+     </div>
+     <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+             <a href="https://github.com/gregja/pjs3D_experiments" target="_blank">Dépôt Github du projet</a>
+             <hr>
+             <ul>
+               <li>------ ProcessingJS et la 2D ------</li>
+               <li><a href="sketch01.html">Sinusoïdes</a></li>
+               <li><a href="sketch02.html">Course de carrés (version PDE + JS)</a></li>
+               <li><a href="sketch03.html">Course de carrés (version full JS)</a></li>
+               <li><a href="sketch04.html">SpinArm & SpinSpots</a></li>
+               <li>------ ProcessingJS et la 3D ------</li>
+               <li><a href="sketch05.html">Cubes fixes</a></li>
+               <li><a href="sketch06.html">livre volant</a></li>
+               <li><a href="sketch07.html">4 cubes en mouvement (*)</a></li>
+               <li><a href="sketch08.html">Primitives 3D (*)</a></li>
+               <li><a href="sketch09.html">SphereDetail & souris</a></li>
+               <li><a href="sketch10.html">Lights & Textures 3D (*)</a></li>
+               <li><a href="sketch11.html">Cylindres (*)</a></li>
+               <li><a href="sketch12.html">Multicubes v1 (mix 2D & 3D) (*)</a></li>
+               <li><a href="sketch13.html">Multicubes v2 (no mix & zoom) (*)</a></li>
+               <li><a href="sketch14.html">Triangle & Quad strips (*)</a></li>
+               <li><a href="sketch15.html">3D Camera (*)</a></li>
+               <li><a href="sketch16.html">Mapping de textures (*)</a></li>
+               <li><a href="sketch17.html">en cours...</a></li>
+             </ul>
+     </div>
+     <div class="w3-container">
+       <br><br><br>
+       <p>(*) libre adaptation d'un exemple tiré du livre de Jan Vantomme : <br>
+       "Processing 2: Creative Programming Cookbook", Packt Publishing 2012</p>
+     </div>
+ </div>
+
 </body>
 </html>

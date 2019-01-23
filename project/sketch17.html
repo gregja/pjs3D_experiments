@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>...</title>
+  <link rel="stylesheet" href="w3.css">
+  <script src="processing.js"></script>
+</head>
+<body>
+   <canvas id="glibcanvas"></canvas>
+   <div id="legend"></div>
+   <div id="options">
+     <div class="slidecontainer">
+       <form>
+         <label>Count : <output data-name="pjs_count" for="pjs_count"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_count" data-form>
+
+         </label>
+         <label>Radius : <output data-name="pjs_radius" for="pjs_radius"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_radius" data-form>
+         </label>
+         <label>Twist : <output data-name="pjs_twist" for="pjs_twist"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_twist" data-form>
+         </label>
+         <label>Count : <output data-name="pjs_hcount" for="pjs_hcount"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_hcount" data-form>
+         </label>
+         <label>Count : <output data-name="pjs_phase" for="pjs_phase"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_phase" data-form>
+         </label>
+         <label>Count : <output data-name="pjs_hradius" for="pjs_hradius"></output>
+           <input type="range" min="1" max="100" value="50" class="slider" id="pjs_hradius" data-form>         
+         </label>
+       </form>
+     </div>
+   </div>
+   <script src="sketch17.js"></script>
+</body>
+</html>
