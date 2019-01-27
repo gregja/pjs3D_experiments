@@ -10,14 +10,50 @@ var sketch = function( dom_canvas ) {
     var max_height = 600;
     var width_by_2 = max_width/2
     var height_by_2 = max_height/2;
+    var render_modes = {quad: pjs.QUAD_STRIP, triangle:pjs.TRIANGLE_STRIP};
+    var render_default = Object.keys(render_modes)[0]; // => quad
 
-    var r = 150;
+    var radius = 150;
     var step = 20;
+
+    var render_callback = function (self) {
+      let keys = Object.keys(render_modes);
+      data_form[self.id] = keys[self.value];
+      render_default = keys[self.value];
+      return keys[self.value];
+    }
+
+    var step_callback = function (self) {
+      data_form[self.id] = self.value;
+      if (step != self.value) {
+        console.log('recalcul '+ self.value );
+        step = self.value;
+        pjs.noLoop();
+        angle_rotation_y = 0.0;
+        sphere.regenerate( radius, step);
+    //    sphere.calculus();
+    pjs.redraw();
+        pjs.loop();
+      }
+      return null;
+    }
+
+    // list of filters to generate as field forms
+    var filters = [];   // count , radius , twist, hcount, phase, hradius
+    filters.push({field:"render_mode", min:0, max:1, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
+    // not working fine : temporarily hidden
+    // filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
+
+    // store live parameters (attached to filters)
+    var data_form = {};
+
+    // generate form fields
+    multiSliders('form', filters, data_form);
 
     pjs.setup = function() {
         pjs.size(max_width, max_height, pjs.P3D);
         pjs.frameRate(25);
-        sphere = new Sphere( 150, 10, pjs);
+        sphere = new Sphere( radius, step, pjs);
         sphere.calculus();
     }
 
@@ -38,7 +74,7 @@ var sketch = function( dom_canvas ) {
         angle_rotation_y += 0.01;
 
         pjs.fill( 255, 0, 0 );
-        pjs.beginShape(pjs.TRIANGLE_STRIP);
+        pjs.beginShape(render_modes[render_default]);
 
         sphere.render();
 

@@ -27,6 +27,7 @@ var sketch = function( dom_canvas ) {
     // what to do when an event "change" is triggered on a field form
     var slider_callback = function (self) {
       data_form[self.id] = self.value;
+      return null;
     }
 
     // list of filters to generate as field forms

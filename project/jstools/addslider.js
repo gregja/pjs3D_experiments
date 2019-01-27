@@ -4,12 +4,17 @@
             <input type="range" min="1" max="100"  step="1" value="50" class="slider" id="pjs_count">
         </label>
     */
-function addSlider( fieldname, domtarget, start, end, value, step, label, callback ) {
+function addSlider( fieldname, domtarget, start, end, value, step, label, callback, init=null ) {
   let xlabel = document.createElement('label');
   xlabel.innerHTML = label + ' : ';
   let xoutput = document.createElement('output');
   xoutput.setAttribute('for', 'pjs_'+fieldname);
-  xoutput.value = value;
+  console.log(init);
+  if (init != null) {
+    xoutput.value = init;
+  } else {
+    xoutput.value = value;
+  }
   xlabel.append(xoutput);
   let xinput = document.createElement('input');
   xinput.setAttribute('type', 'range');
@@ -23,8 +28,12 @@ function addSlider( fieldname, domtarget, start, end, value, step, label, callba
   domtarget.append(xlabel);
   xinput.addEventListener('change', function(evt) {
     let output = evt.target.parentNode.querySelector('output');
-    output.value = this.value;
-    callback(this);
+    let substition = callback(this);
+    if (substition) {
+      output.value = substition;
+    } else {
+      output.value = this.value;
+    }
   }, false)
 }
 
@@ -32,7 +41,7 @@ function multiSliders(dom_target, filters, data_form) {
   var form = document.getElementById(dom_target);
   if (form) {
     filters.forEach(item => {
-        addSlider(item.field, form, item.min, item.max, item.value, item.step, item.label, item.callback);
+        addSlider(item.field, form, item.min, item.max, item.value, item.step, item.label, item.callback, item.init || null);
         data_form['pjs_'+item.field] = item.value;
     });
   } else {
