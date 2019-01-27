@@ -31,8 +31,8 @@ var sketch = function( dom_canvas ) {
 
     // list of filters to generate as field forms
     var filters = [];   // count , radius , twist, hcount, phase, hradius
-    filters.push({field:"count", min:1, max:20, value:5, step:1, label:"Count", callback:slider_callback});
-    filters.push({field:"radius", min:-10, max:10, value:5, step:1, label:"Radius", callback:slider_callback});
+    filters.push({field:"count", min:1, max:100, value:5, step:1, label:"Count", callback:slider_callback});
+    filters.push({field:"radius", min:-10, max:100, value:5, step:1, label:"Radius", callback:slider_callback});
     filters.push({field:"twist", min:-2, max:2, value:2, step:.1, label:"Twist", callback:slider_callback});
     filters.push({field:"hcount", min:0, max:2, value:1.5, step:.1, label:"HCount", callback:slider_callback});
     filters.push({field:"phase", min:0, max:4, value:2, step:1, label:"Phase", callback:slider_callback});
