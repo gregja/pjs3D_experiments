@@ -38,7 +38,7 @@ var sketch = function( dom_canvas ) {
         angle_rotation_y += 0.01;
 
         pjs.fill( 255, 0, 0 );
-        pjs.beginShape(pjs.QUAD_STRIP);
+        pjs.beginShape(pjs.TRIANGLE_STRIP);
 
         sphere.render();
 
@@ -48,6 +48,13 @@ var sketch = function( dom_canvas ) {
         pjs.popMatrix();
     }
 
+    pjs.keyPressed = function(){
+      let touchkey = String(pjs.key).toLowerCase();
+      if (touchkey == 'x') {
+        console.warn('Stopped the loop');
+        pjs.noLoop();
+      }
+    }
 
     // kickstart the sketch
     pjs.setup();
