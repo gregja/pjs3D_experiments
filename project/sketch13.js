@@ -41,14 +41,14 @@ void draw() {
 
 */
 
-(function(){
+var sketch = function( dom_canvas ) {
   "use strict";
 
   var envirposits = {x:0, y:0, z:0};
   var limit = 500;
   var envirlimits = {xmin:-limit, xmax:limit, ymin:-limit, ymax:limit, zmin:-limit, zmax:limit};
 
-  var canvas = document.getElementById('glibcanvas');
+  var canvas = document.getElementById(dom_canvas);
   var pjs = new Processing(canvas);
 
   var legend = document.getElementById('legend');
@@ -145,4 +145,10 @@ void draw() {
   }
    // kickstart the sketch
    pjs.setup();
-})();
+};
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Kickstart the sketch when the DOM is ready (best practice)");
+  sketch('glibcanvas');
+});
+

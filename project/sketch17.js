@@ -1,7 +1,7 @@
-(function(){
+var sketch = function( dom_canvas ) {
   "use strict";
 
-    var canvas = document.getElementById('glibcanvas');
+    var canvas = document.getElementById(dom_canvas);
     var pjs = new Processing(canvas);
 
     var texture1;
@@ -136,6 +136,10 @@
         qdrag.setCrossDot( down.cross( drag), down.dot( drag ));
     }
 
-    // kickstart the sketch
     pjs.setup();
-})();
+
+};
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Kickstart the sketch when the DOM is ready (best practice)");
+  sketch('glibcanvas');
+});

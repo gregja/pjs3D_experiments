@@ -36,14 +36,14 @@ camera( x, 0, z, width/2, height-50, -500, 0, 1, 0 );
 
 */
 
-(function(){
+var sketch = function( dom_canvas ) {
   "use strict";
 
   var envirposits = {x:0, y:0, z:0};
   var limit = 500;
   var envirlimits = {xmin:-limit, xmax:limit, ymin:-limit, ymax:limit, zmin:-limit, zmax:limit};
 
-  var canvas = document.getElementById('glibcanvas');
+  var canvas = document.getElementById(dom_canvas);
   var pjs = new Processing(canvas);
 
   var legend = document.getElementById('legend');
@@ -108,4 +108,10 @@ camera( x, 0, z, width/2, height-50, -500, 0, 1, 0 );
   }
    // kickstart the sketch
    pjs.setup();
-})();
+};
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Kickstart the sketch when the DOM is ready (best practice)");
+  sketch('glibcanvas');
+});
+

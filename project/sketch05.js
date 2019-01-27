@@ -1,7 +1,7 @@
-(function(){
+var sketch = function( dom_canvas ) {
   "use strict";
 
-  var canvas = document.getElementById('glibcanvas');
+  var canvas = document.getElementById(dom_canvas);
   var pjs = new Processing(canvas);
 
     pjs.setup = function() {
@@ -24,4 +24,10 @@
 
    // kickstart the sketch
    pjs.setup();
-})();
+};
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Kickstart the sketch when the DOM is ready (best practice)");
+  sketch('glibcanvas');
+});
+

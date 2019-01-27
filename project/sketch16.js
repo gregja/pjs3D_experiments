@@ -42,10 +42,10 @@ void draw() {
 
 */
 
-(function(){
+var sketch = function( dom_canvas ) {
   "use strict";
 
-  var canvas = document.getElementById('glibcanvas');
+  var canvas = document.getElementById(dom_canvas);
   var pjs = new Processing(canvas);
 
   var texture1;
@@ -63,7 +63,9 @@ void draw() {
     pjs.noLoop();
 
     // setTimeout nécessaire pour laisser au navigateur le temps de charger les images
-    setTimeout(function(){
+    // ça fonctionne mais ce n'est certainement pas la meilleure façon de faire,
+    // solution à améliorer (TODO)
+    setTimeout(function() {
       pjs.loop();
     }, 1000);
   }
@@ -86,6 +88,7 @@ void draw() {
 
     pjs.textureMode( pjs.NORMAL );
     pjs.pushMatrix();
+    pjs.tint(0, 180, 255, 126); // ajout couleur bleue + transparence
     pjs.translate( pjs.width*.75, pjs.height/2, 0 );
     pjs.rotateY( pjs.radians( -pjs.frameCount ) );
     pjs.beginShape();
@@ -100,4 +103,9 @@ void draw() {
 
    // kickstart the sketch
    pjs.setup();
-})();
+};
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log("Kickstart the sketch when the DOM is ready (best practice)");
+  sketch('glibcanvas');
+});
