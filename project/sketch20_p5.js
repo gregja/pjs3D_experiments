@@ -25,6 +25,8 @@ var s = function( sketch ) {
     var ellipse_type = 1;
     var vertexActive = false;
 
+    var drawingContext;
+
     var force = d3.layout.force()
     .gravity(0.05)
     .charge(function(d, i) { return i ? 0 : -2000; })
@@ -46,6 +48,7 @@ var s = function( sketch ) {
         n = nodes.length;
       });
 
+      drawingContext = sketch.drawingContext;
     }
 
     sketch.draw = function() {
@@ -55,12 +58,10 @@ var s = function( sketch ) {
         q.visit(collide(nodes[i]));
       }
 
-      var drawingContext = sketch.drawingContext;
-
       sketch.background(255);
       if (ellipse_type == 1) {
         sketch.stroke("steelblue");
-        sketch.fill("white");
+        sketch.fill("rgba(192,192,192, .5)");
       } else {
         drawingContext.save();
         if (ellipse_type == 3) {
@@ -85,7 +86,7 @@ var s = function( sketch ) {
 
         if (ellipse_type == 1) {
           // Tracé des cercles réalisé par P5
-          sketch.ellipse(d.x, d.y, d.radius);
+          sketch.rect(d.x, d.y, d.radius, d.radius);
         } else {
           // Tracé des cercles réalisé par Canvas avec effet de dégradé
           grd = drawingContext.createRadialGradient(d.x, d.y, 0, d.x, d.y, d.radius);

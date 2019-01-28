@@ -11,8 +11,15 @@ var s = function( sketch ) {
     var max_height = 600;
     var width_by_2 = max_width/2
     var height_by_2 = max_height/2;
-    // only 2 modes supported by P5 for WEBGL : POINTS and TRIANGLES
-    var render_modes = {triangles:sketch.TRIANGLES, points: sketch.POINTS};
+
+    // POINTS ok
+    // no difference of rendering for: LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP
+    // not implemented on P5/WebGL : QUAD_STRIP, QUADS
+    var render_modes = {triangle_strip:sketch.TRIANGLE_STRIP,
+      lines:sketch.LINES, points: sketch.POINTS, triangle_fan:sketch.TRIANGLE_FAN,
+      triangles: sketch.TRIANGLES,
+    };
+
     var render_default = Object.keys(render_modes)[0];
 
     var radius = 150;
@@ -42,7 +49,7 @@ var s = function( sketch ) {
 
     // list of filters to generate as field forms
     var filters = [];   // count , radius , twist, hcount, phase, hradius
-    filters.push({field:"render_mode", min:0, max:1, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
+    filters.push({field:"render_mode", min:0, max:4, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
 // not working fine : temporarily hidden
 //    filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
 

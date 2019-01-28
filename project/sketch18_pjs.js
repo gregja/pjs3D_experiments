@@ -10,7 +10,11 @@ var sketch = function( dom_canvas ) {
     var max_height = 600;
     var width_by_2 = max_width/2
     var height_by_2 = max_height/2;
-    var render_modes = {quad: pjs.QUAD_STRIP, triangle:pjs.TRIANGLE_STRIP};
+    // POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, and QUAD_STRIP
+    var render_modes = {quad: pjs.QUAD_STRIP, triangle:pjs.TRIANGLE_STRIP,
+      lines:pjs.LINES, points: pjs.POINTS, triangle_fan:pjs.TRIANGLE_FAN,
+      triangles: pjs.TRIANGLES, quads: pjs.QUADS
+    };
     var render_default = Object.keys(render_modes)[0]; // => quad
 
     var radius = 150;
@@ -40,7 +44,7 @@ var sketch = function( dom_canvas ) {
 
     // list of filters to generate as field forms
     var filters = [];   // count , radius , twist, hcount, phase, hradius
-    filters.push({field:"render_mode", min:0, max:1, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
+    filters.push({field:"render_mode", min:0, max:6, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
     // not working fine : temporarily hidden
     // filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
 
