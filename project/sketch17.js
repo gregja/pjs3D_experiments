@@ -73,7 +73,6 @@ var sketch = function( dom_canvas ) {
     pjs.draw = function() {
         pjs.background( 255 );
         pjs.lights();
-
         pjs.pushMatrix();
         pjs.translate( width_by_2, height_by_2);
         pjs.scale( 1.5 );
@@ -84,7 +83,7 @@ var sketch = function( dom_canvas ) {
         pjs.rotate( matrix[0], matrix[1], matrix[2], matrix[3] );
 
         pjs.translate(0, -50, 0);
-        pjs.fill( 255, 0, 0 );
+        pjs.fill( 105, 90 );
 
         initPoints();
 
