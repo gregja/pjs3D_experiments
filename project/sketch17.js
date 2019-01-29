@@ -45,6 +45,10 @@ var sketch = function( dom_canvas ) {
     // generate form fields
     multiSliders('form', filters, data_form);
 
+    var first_color = "#E2DE5F";
+    var formcolor = {};
+    colorPicker('couleur', 'form', first_color, 'Couleur', function(col) { formcolor = col});
+
     function getR( a, h) {
         return  data_form.pjs_radius * pjs.sin( pjs.radians(a)
             * data_form.pjs_count
@@ -72,7 +76,7 @@ var sketch = function( dom_canvas ) {
 
     pjs.draw = function() {
         pjs.background( 255 );
-        pjs.lights();
+      //  pjs.lights();
         pjs.pushMatrix();
         pjs.translate( width_by_2, height_by_2);
         pjs.scale( 1.5 );
@@ -83,7 +87,7 @@ var sketch = function( dom_canvas ) {
         pjs.rotate( matrix[0], matrix[1], matrix[2], matrix[3] );
 
         pjs.translate(0, -50, 0);
-        pjs.fill( 105, 90 );
+        pjs.fill( formcolor.rouge, formcolor.vert, formcolor.bleu );
 
         initPoints();
 

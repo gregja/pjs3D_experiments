@@ -9,7 +9,7 @@ function addSlider( fieldname, domtarget, start, end, value, step, label, callba
   xlabel.innerHTML = label + ' : ';
   let xoutput = document.createElement('output');
   xoutput.setAttribute('for', 'pjs_'+fieldname);
-  console.log(init);
+
   if (init != null) {
     xoutput.value = init;
   } else {
