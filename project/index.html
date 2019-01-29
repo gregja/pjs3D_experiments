@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Expériences 2D et 3D avec ProcessingJS</title>
   <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="js/processing-patch.js"></script>
 </head>
 <body>
@@ -19,7 +20,9 @@
        et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent
        comment porter ces projets sur le web (sachant que le projet concurrent de ProcessingJS,
        n'atteint pas un aussi bon niveau de portabilité pour la 3D, à mon grand regret d'ailleurs).
-       <br></p>
+       <br>
+       Afin d'avoir une base de comparaison sur les problématiques liées à la 3D, j'ai transposé quelques sketchs de ProcessingJS vers P5js.
+     </p>
        <p>
          Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une
          "pure JS library", comme expliqué à la fin du
@@ -29,48 +32,21 @@
          ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
          trouver le mode qui vous convient le mieux.
        </p>
-       <p>Pour les tests relatifs à la 3D, j'ai repris et adapté plusieurs sketchs tirés
-         de plusieurs très bons livres dont les références sont indiquées en bas de cette  page.</p>
+       <p>Pour certains des tests relatifs à la 3D, j'ai repris et adapté des sketchs donc certains sont tirés
+         de livres dont les références sont indiquées au cas par cas. Pour des explications théoriques sur le fonctionnement de ces sketchs, prière de se reporter aux livres correspondants.</p>
+         <p>Attention : j'ai patché le code source de la version de ProcessingJS utilisée dans ce projet, de manière à utiliser l'API WEBGL2 en priorité sur WEBGL (si disponible dans le navigateur),
+           avec antialiasing actif par défaut. Le patch se trouve dans le fichier processing-patch.js (cf. fonction "getGLContext")</p>
 
      </div>
      <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
-             <a href="https://github.com/gregja/pjs3D_experiments" target="_blank">Dépôt Github du projet</a>
-             <hr>
-             <ul>
-               <li>------ ProcessingJS et la 2D ------</li>
-               <li><a href="sketch01.html">Sinusoïdes</a></li>
-               <li><a href="sketch02.html">Course de carrés (version PDE + JS)</a></li>
-               <li><a href="sketch03.html">Course de carrés (version full JS)</a></li>
-               <li><a href="sketch04.html">SpinArm & SpinSpots</a></li>
-               <li>Combiner Processing avec D3 : <a href="sketch20_pjs.html">version PJS</a>, <a href="sketch20_p5.html">version P5</a></li>
+       <br>
+       <a href="index_2d.html"class="button button-green">Labo 2D</a>
+       <a href="index_3d.html"class="button button-green">Labo 3D</a>
+       <a href="https://github.com/gregja/pjs3D_experiments" target="_blank" class="button button-green">Dépôt Github du projet</a>
+       <br><br>
 
-               <li>------ ProcessingJS et la 3D ------</li>
-               <li><a href="sketch05.html">Cubes fixes</a></li>
-               <li><a href="sketch06.html">livre volant</a></li>
-               <li><a href="sketch07.html">4 cubes en mouvement (*1)</a></li>
-               <li><a href="sketch08.html">Primitives 3D (*1)</a></li>
-               <li><a href="sketch09.html">SphereDetail & souris</a></li>
-               <li><a href="sketch10.html">Lights & Textures 3D (*1)</a></li>
-               <li><a href="sketch11.html">Cylindres (*1)</a></li>
-               <li><a href="sketch12.html">Multicubes v1 (mix 2D & 3D) (*1)</a></li>
-               <li><a href="sketch13.html">Multicubes v2 (no mix & zoom) (*1)</a></li>
-               <li><a href="sketch14.html">Triangle & Quad strips (*1)</a></li>
-               <li><a href="sketch15.html">3D Camera (*1)</a></li>
-               <li><a href="sketch16.html">Mapping de textures (*1)</a></li>
-               <li><a href="sketch17.html">Générateur de formes (*2)</a></li>
-               <li>Sphere 3D (*2) : <a href="sketch18_pjs.html">version ProcessingJS</a>, <a href="sketch18_p5.html">version P5</a></li>
-               <li>Effet lightDirectional : <a href="sketch19_pjs.html">version ProcessingJS</a>, <a href="sketch19_p5.html">version P5</a></li>
-               <li>Generative Gestaltung M_1_4_01 : <a href="sketch21_pjs.html">version ProcessingJS</a>, <a href="http://www.generative-gestaltung.de/2/sketches/?02_M/M_1_4_01" target="_blank">version originale (P5)</a></li>
-        <!--       <li>Generative Gestaltung M_1_4_01 : <a href="sketch21_pjs.html">version ProcessingJS</a>, <a href="sketch21_p5.html" >version originale (P5)</a></li> -->
-             </ul>
      </div>
-     <div class="w3-container">
-       <br><br><br>
-       <p>(*1) adaptation d'exemples tirés du livre de Jan Vantomme : <br>
-       "Processing 2: Creative Programming Cookbook", Packt Publishing 2012</p>
-       <p>(*2) adaptation d'exemple tiré du livre de Nikolaus Gradwohl : <br>
-       "Processing 2: Creative Programming Hotshot", Packt Publishing 2013</p>
-     </div>
+
  </div>
 
 </body>

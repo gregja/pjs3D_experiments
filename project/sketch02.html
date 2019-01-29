@@ -3,16 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title>Course de carrés (V1)</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="js/processing-patch.js"></script>
 </head>
 <body>
+
+    <!--  Now a canvas to create our drawing area.  We rely     -->
+    <!--  on the 'id' attribute of our canvas to bind the       -->
+    <!--  script to the canavs at run-time.  This way you can   -->
+    <!--  have multiple sketches per page.                      -->
+    <canvas id="glibcanvas"></canvas>
+
+    <!--  Display info about globals here (see interval above)  -->
+    <div id="output"></div>
+
+    <p>Change the value of x <input type="text" id="xvalue"/> <button onclick="updateX();">Update X</button></p>
 
   <script type="text/javascript">
     // Run this function every 50ms to print values of variables in
     // the sketch without putting them in the global scope.
     setInterval(function() {
       // Grab running sketch instance and call its getCurrentX function
-      var p = Processing.getInstanceById('sketch');
+      var p = Processing.getInstanceById('glibcanvas');
       var x = p.getCurrentX();
       var output = document.getElementById('output');
       output.innerHTML = "x=" + x;
@@ -22,7 +35,7 @@
       // Get new x value from HTML form and convert to integer
       var x = (document.getElementById('xvalue').value)|0;
       // Grab running sketch instance and set the current x value
-      var p = Processing.getInstanceById('sketch');
+      var p = Processing.getInstanceById('glibcanvas');
       var x = p.setCurrentX(x);
     }
   </script>
@@ -32,7 +45,7 @@
   <!-- also works) means it gets ignored by the browser, and found by        -->
   <!-- Processing.js.  The 'data-processing-target' attribute gives the id   -->
   <!-- of the canvas to use for this code.                                   -->
-  <script type="text/processing" data-processing-target="sketch">
+  <script type="text/processing" data-processing-target="glibcanvas">
     // Original Translation sketch from processing.org
     float x, y;
     float dim = 80;
@@ -67,15 +80,6 @@
     }
   </script>
 
-  <!--  Now a canvas to create our drawing area.  We rely     -->
-  <!--  on the 'id' attribute of our canvas to bind the       -->
-  <!--  script to the canavs at run-time.  This way you can   -->
-  <!--  have multiple sketches per page.                      -->
-  <canvas id="sketch"></canvas>
-
-  <!--  Display info about globals here (see interval above)  -->
-  <div id="output"></div>
-
-  <p>Change the value of x <input type="textfield" id="xvalue"/> <button onclick="updateX();">Update X</button></p>
+  <br><br><a href="index_2d.html" class="button button-green">Retour au Labo 2D</a><br><br>
 </body>
 </html>

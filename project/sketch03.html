@@ -3,59 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Course de carrés (V2)</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
   <script src="js/processing-patch.js"></script>
 </head>
 <body>
+  <canvas id="glibcanvas"></canvas>
 
-  <!-- Inline JavaScript which uses Processing.js as a canvas drawing API.   -->
-  <!-- Note that we have to create and start our sketch manually.            -->
-  <script type="text/javascript">
-    // Original Translation sketch from processing.org
-    // Wait until the DOM is ready...
-    document.addEventListener('DOMContentLoaded', function() {
-      // Processing.js will use this function as the body of the sketch,
-      // and pass us a processing instance, which we can use to attach
-      // things like setup() and draw(), and to access all the various
-      // Processing types, functions and values.
-      var sketchBody = function(processing) {
-        var x = 0,
-            y = 0,
-            dim = 80;
-        processing.setup = function() {
-          processing.size(640, 360);
-          processing.noStroke();
-        }
-        processing.draw = function() {
-          processing.background(102);
-          x = x + 0.8;
-          if (x > processing.width + dim) {
-            x = -dim;
-          }
-          processing.translate(x, processing.height/2-dim/2);
-          processing.fill(255);
-          processing.rect(-dim/2, -dim/2, dim, dim);
-          // Transforms accumulate. Notice how this rect moves
-          // twice as fast as the other, but it has the same
-          // parameter for the x-axis value
-          processing.translate(x, dim);
-          processing.fill(0);
-          processing.rect(-dim/2, -dim/2, dim, dim);
-        }
-      };
-      // Wrap our code in a Processing.Sketch object to setup the
-      // rest of the bits we'll need later.  It takes a function that
-      // accepts one argument, a processing instance.
-      var sketch = new Processing.Sketch(sketchBody);
-      // Pass in the 'id' of the canvas (or the canvas element itself)
-      // and a Processing.Sketch object.
-      var processingInstance = new Processing("sketch", sketch);
-    }, false);
-  </script>
+  <!--  Display info about globals here (see interval above)  -->
+  <div id="xoutput"></div>
 
-  <!--  Now a canvas to create our drawing area.  We rely     -->
-  <!--  on the 'id' attribute of our canvas to bind the       -->
-  <!--  script to the canavs at run-time.  This way you can   -->
-  <!--  have multiple sketches per page.                      -->
-  <canvas id="sketch"></canvas>
+  <p>Change the value of x <input type="text" id="xvalue"/> <button id="xupdate">Update X</button></p>
+
+  <script src="sketch03.js"></script>
+
+  <br><br><a href="index_2d.html" class="button button-green">Retour au Labo 2D</a><br><br>
 </body>
 </html>

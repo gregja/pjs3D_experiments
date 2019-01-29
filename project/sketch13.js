@@ -1,46 +1,3 @@
-/*
-
-float n;
-void setup()
-{
-  size( 640, 480, OPENGL );
-  n = 0.0f;
-}
-
-void draw() {
-
-    hint( ENABLE_DEPTH_TEST );
-    n += 0.01;
-    background( 255 );
-    lights();
-    noStroke();
-    fill( 255, 128, 0 );
-    pushMatrix();
-    for ( int i = 0; i < 17; i++ ) {
-      for ( int j = 0; j < 13; j++ ) {
-        pushMatrix();
-        fill( i * 15, 0, j * 19 );
-        translate( i * 40, j * 40 );
-        rotateY( radians( i * 10 + frameCount ) );
-      rotateZ( radians( i * 10 + frameCount ) );
-      box( noise( i, j, n ) * 40 );
-      popMatrix();
-    }
-  }
-  popMatrix();
-
-  noLights();
-  fill( 0 );
-  stroke( 0 );
-  rect( 320, 40, 200, 200 );
-  hint( DISABLE_DEPTH_TEST );
-  fill( 255 );
-  rect( 320, 240, 200, 200 );
-
-}
-
-*/
-
 var sketch = function( dom_canvas ) {
   "use strict";
 
@@ -64,7 +21,6 @@ var sketch = function( dom_canvas ) {
   }
 
   pjs.draw = function() {
-
       pjs.hint( pjs.ENABLE_DEPTH_TEST );
       n += 0.01;
       pjs.background( 255 );
@@ -84,16 +40,8 @@ var sketch = function( dom_canvas ) {
         }
       }
       pjs.popMatrix();
-
-    /*  pjs.noLights();
-      pjs.fill( 0 );
-      pjs.stroke( 0 );
-      pjs.rect( 320+envirposits.x, 40+envirposits.y , 200 , 200 );
-      pjs.hint( pjs.DISABLE_DEPTH_TEST );
-      pjs.fill( 255 );
-      pjs.rect( 320, 240, 200, 200 ); */
-
   }
+
   pjs.keyPressed = function(){
     let touchkey = String(pjs.key).toLowerCase();
     let touchcode = pjs.keyCode;
@@ -151,4 +99,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
   console.log("Kickstart the sketch when the DOM is ready (best practice)");
   sketch('glibcanvas');
 });
-

@@ -124,7 +124,7 @@ var s = function( sketch ) {
     }
 
     sketch.keyTyped = function() {
-      let key = sketch.key.toLowerCase();
+      let key = String(sketch.key).toLowerCase();
       if (key == 'a') {
         ellipse_type++ ;
         if (ellipse_type > 3) {

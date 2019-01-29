@@ -10,7 +10,8 @@ var sketch = function( dom_canvas ) {
     var max_height = 600;
     var width_by_2 = max_width/2
     var height_by_2 = max_height/2;
-    // POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, and QUAD_STRIP
+
+    // render modes : POINTS, LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP, QUADS, and QUAD_STRIP
     var render_modes = {quad: pjs.QUAD_STRIP, triangle:pjs.TRIANGLE_STRIP,
       lines:pjs.LINES, points: pjs.POINTS, triangle_fan:pjs.TRIANGLE_FAN,
       triangles: pjs.TRIANGLES, quads: pjs.QUADS
@@ -45,8 +46,9 @@ var sketch = function( dom_canvas ) {
     // list of filters to generate as field forms
     var filters = [];   // count , radius , twist, hcount, phase, hradius
     filters.push({field:"render_mode", min:0, max:6, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
-    // not working fine : temporarily hidden
-    // filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
+
+// not working fine : temporarily hidden
+// filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
 
     // store live parameters (attached to filters)
     var data_form = {};
@@ -68,9 +70,6 @@ var sketch = function( dom_canvas ) {
         pjs.translate( width_by_2, height_by_2 );
         pjs.lights();
         pjs.ambientLight(128,128,128);
-        //pjs.pointLight(255,255,255,-250,-250,500);
-        //pjs.pointLight( 255, 255, 0, 100, pjs.height*0.3, 100 );
-        //pjs.directionalLight(128,128,128,0,0,-1);
 
         pjs.pushMatrix();
         pjs.rotateX( pjs.radians(-30));

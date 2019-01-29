@@ -1,54 +1,54 @@
 var sketch = function( dom_canvas ) {
 "use strict";
 
-var canvas = document.getElementById(dom_canvas);
-var pjs = new Processing(canvas);
+    var canvas = document.getElementById(dom_canvas);
+    var pjs = new Processing(canvas);
 
-class Spin {
+    class Spin {
 
-  constructor(x, y, s) {
-    this.x = x;
-    this.y = y;
-    this.speed = s;
-    this.angle = 0.0;
-  }
-  update() {
-    this.angle += this.speed;
-  }
-}
+      constructor(x, y, s) {
+        this.x = x;
+        this.y = y;
+        this.speed = s;
+        this.angle = 0.0;
+      }
+      update() {
+        this.angle += this.speed;
+      }
+    }
 
-class SpinArm extends Spin {
-  constructor(x, y, s) {
-    super(x, y, s);
-  }
-  display() {
-    pjs.strokeWeight(1);
-    pjs.stroke(0);
-    pjs.pushMatrix();
-    pjs.translate(this.x, this.y);
-    this.angle += this.speed;
-    pjs.rotate(this.angle);
-    pjs.line(0, 0, 66, 0);
-    pjs.popMatrix();
-  }
-}
+    class SpinArm extends Spin {
+      constructor(x, y, s) {
+        super(x, y, s);
+      }
+      display() {
+        pjs.strokeWeight(1);
+        pjs.stroke(0);
+        pjs.pushMatrix();
+        pjs.translate(this.x, this.y);
+        this.angle += this.speed;
+        pjs.rotate(this.angle);
+        pjs.line(0, 0, 66, 0);
+        pjs.popMatrix();
+      }
+    }
 
-class SpinSpots extends Spin{
-  constructor(x, y, s, d) {
-    super(x, y, s);
-    this.dim = d;
-  }
-  display() {
-    pjs.noStroke();
-    pjs.pushMatrix();
-    pjs.translate(this.x, this.y);
-    this.angle += this.speed;
-    pjs.rotate(this.angle);
-    pjs.ellipse(-this.dim/2, 0, this.dim, this.dim);
-    pjs.ellipse(this.dim/2, 0, this.dim, this.dim);
-    pjs.popMatrix();
-  }
-}
+    class SpinSpots extends Spin{
+      constructor(x, y, s, d) {
+        super(x, y, s);
+        this.dim = d;
+      }
+      display() {
+        pjs.noStroke();
+        pjs.pushMatrix();
+        pjs.translate(this.x, this.y);
+        this.angle += this.speed;
+        pjs.rotate(this.angle);
+        pjs.ellipse(-this.dim/2, 0, this.dim, this.dim);
+        pjs.ellipse(this.dim/2, 0, this.dim, this.dim);
+        pjs.popMatrix();
+      }
+    }
 
     var arm, spots;
     // Definition for the initial entry point
@@ -79,4 +79,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
   console.log("Kickstart the sketch when the DOM is ready (best practice)");
   sketch('glibcanvas');
 });
-

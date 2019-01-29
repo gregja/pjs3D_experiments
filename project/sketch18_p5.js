@@ -2,8 +2,6 @@ var s = function( sketch ) {
     "use strict";
 
     // p5.disableFriendlyErrors = true;
-  //  var canvas = document.getElementById(dom_canvas);
-  //  var pjs = new Processing(canvas);
 
     var angle_rotation_y = 0.0;
     var sphere;
@@ -12,9 +10,9 @@ var s = function( sketch ) {
     var width_by_2 = max_width/2
     var height_by_2 = max_height/2;
 
-    // POINTS ok
-    // no difference of rendering for: LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP
-    // not implemented on P5/WebGL : QUAD_STRIP, QUADS
+    // render mode POINTS ok
+    // no visual difference for render modes : LINES, TRIANGLES, TRIANGLE_FAN, TRIANGLE_STRIP
+    // render modes not implemented on P5/WebGL : QUAD_STRIP, QUADS
     var render_modes = {triangle_strip:sketch.TRIANGLE_STRIP,
       lines:sketch.LINES, points: sketch.POINTS, triangle_fan:sketch.TRIANGLE_FAN,
       triangles: sketch.TRIANGLES,
@@ -50,6 +48,7 @@ var s = function( sketch ) {
     // list of filters to generate as field forms
     var filters = [];   // count , radius , twist, hcount, phase, hradius
     filters.push({field:"render_mode", min:0, max:4, value:0, step:1, label:"Mode", callback:render_callback, init:render_default});
+
 // not working fine : temporarily hidden
 //    filters.push({field:"steps", min:1, max:100, value:step, step:1, label:"Step (bug!)", callback:step_callback});
 
@@ -71,11 +70,6 @@ var s = function( sketch ) {
         sketch.background( 255 );
         sketch.push();
 
-      //  sketch.translate( width_by_2, height_by_2 );
-      //  sketch.lights();
-      //  sketch.ambientLight(128,128,128);
-      //  sketch.pointLight(255,255,255,-250,-250,500);
-        //sketch.pointLight( 255, 255, 0, 100, sketch.height*0.3, 100 );
         sketch.directionalLight(128,128,128,0,0,-1);
 
         sketch.push();
