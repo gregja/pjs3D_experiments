@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fonctions modelX, modelY, modelZ</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+  <script src="jstools/addslider.js"></script>
+</head>
+<body>
+  <canvas id="glibcanvas"></canvas>
+  <div id="legend"><h3>Fonctions Processing modelX, modelY, modelZ</h3>
+    Dans cet exemple, proposé par le site officiel de Processing, les fonctions modelX (), modelY () et modelZ () enregistrent l'emplacement d'un objet dans l'espace, qui a été positionné avec les fonctions de transformation "translate" et "rotate".
+    Après l'appel de la fonction popMatrix (), les transformations ne s'appliquent plus, mais le jeu de coordonnées (x, y, z) renvoyé par les fonctions précitées est utilisée pour placer une autre "box" sur le même emplacement.<br><br>
+
+    Pour faciliter la compréhension de l'exemple, seul le cube principal est affiché par défaut, le cube secondaire (qui emprunte les coordonnées du premier), est affiché via la touche "b".
+    On peut revenir à l'affichage initial via la touche "a".<br><br>
+
+    Par rapport à l'exemple d'origine, j'ai doublé la taille du cube principal, via la fonction scale(2), ce qui permet de constater que l'objet secondaire n'est pas impacté par ce changement d'échelle.<br><br>
+
+    L'absence des fonctions modelX, modelY et modelZ dans P5 rend très difficile la conversion de ce sketch sur P5. </div>
+  <div id="current_mode"></div>
+   <script src="sketch22_pjs.js"></script>
+        <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+</body>
+</html>
