@@ -2,41 +2,44 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Expériences 2D et 3D avec ProcessingJS</title>
+  <title>Expériences 2D et 3D avec ProcessingJS et P5js</title>
   <link rel="stylesheet" href="css/w3.css">
   <link rel="stylesheet" href="css/main.css">
   <script src="js/processing-patch.js"></script>
 </head>
 <body>
 <div class="w3-container w3-blue">
-     <h2>Expériences 2D et 3D avec ProcessingJS</h2>
+     <h2>Expériences 2D et 3D avec ProcessingJS et P5js</h2>
  </div>
  <div class="w3-container">
      <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
        <p>
        Le but de ce projet personnel et assez expérimental est de tester la bonne portabilité du code Processing
        vers ProcessingJS. <br>
-       Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. Les résultats obtenus sont très encourageants,
+       Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. Les résultats obtenus avec ProcessingJS sont très encourageants,
        et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent
-       comment porter ces projets sur le web (sachant que le projet concurrent de ProcessingJS,
-       n'atteint pas un aussi bon niveau de portabilité pour la 3D, à mon grand regret d'ailleurs).
+       comment porter ces projets sur le web.
        <br>
-       Afin d'avoir une base de comparaison sur les problématiques liées à la 3D, j'ai transposé quelques sketchs de ProcessingJS vers P5js.
+       Afin d'avoir une base de comparaison sur les problématiques liées à la 3D, j'ai transposé quelques sketchs de ProcessingJS vers P5js, ou
+       quelquefois repris la version originale d'un sketch sous P5, pour l'intégrer ici à titre de comparaison.
      </p>
        <p>
          Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une
          "pure JS library", comme expliqué à la fin du
           <a href="http://processingjs.org/articles/PomaxGuide.html" target="_blank">"Pomax Guide"</a>.
-         Ce choix a été dicté par le fait que je suis un développeur Javascript, et non Java,
-         et que je souhaite utiliser ProcessingJS de cette manière. Mais vous pouvez utiliser
-         ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
-         trouver le mode qui vous convient le mieux.
+         Cette technique nous amène à un code plus verbeux, car il faut préfixer (avec le code de son choix) toutes les fonctions et constantes de
+         ProcessingJS, mais cela permet d'obtenir un meilleur contrôle sur le déroulement du sketch, et ainsi de l'intégrer au sein d'applications plus complexes.
+         Mais vous pouvez utiliser ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
+         trouver le mode qui vous convient le mieux.<br>
+         Pour les adaptations de certains sketchs sur P5, j'ai opté pour le même style d'écriture, et ce pour les mêmes raisons.
        </p>
        <p>Pour certains des tests relatifs à la 3D, j'ai repris et adapté des sketchs donc certains sont tirés
-         de livres dont les références sont indiquées au cas par cas. Pour des explications théoriques sur le fonctionnement de ces sketchs, prière de se reporter aux livres correspondants.</p>
-         <p>Attention : j'ai patché le code source de la version de ProcessingJS utilisée dans ce projet, de manière à utiliser l'API WEBGL2 en priorité sur WEBGL (si disponible dans le navigateur),
+         de livres dont les références sont indiquées au cas par cas. </p>
+         <p>IMPORTANT : j'ai patché le code source de la version de ProcessingJS utilisée dans ce projet, de manière à utiliser l'API WEBGL2 en priorité sur WEBGL (si disponible dans le navigateur),
            avec antialiasing actif par défaut. Le patch se trouve dans le fichier processing-patch.js (cf. fonction "getGLContext")</p>
-
+         <p>Il faut souligner que ces tests ont été effectués entre janvier et février 2019, avec les versions 0.7.2 de P5 et 1.4.8 de ProcessingJS.
+           Ce dernier propose un support très complet de la 3D proposée par Processing, mais P5 ne s'en sort pas trop mal non plus, et il sera intéressant de surveiller l'évolution de ces deux frameworks.
+         </p>
      </div>
      <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
        <br>
@@ -44,7 +47,7 @@
        <a href="index_3d.html"class="button button-green">Labo 3D</a>
        <a href="https://github.com/gregja/pjs3D_experiments" target="_blank" class="button button-green">Dépôt Github du projet</a>
        <br><br>
-
+       Ce projet est dédié à mes amis du meetup <a href="https://www.meetup.com/fr-FR/CreativeCodeParis/" target="_blank">CreativeCodeParis</a>, et à tous les amoureux de creative coding.<br>
      </div>
 
  </div>

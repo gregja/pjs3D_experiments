@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Les cubes de Dave Briccetti</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+  <script src="jstools/addslider.js"></script>
+</head>
+<body>
+  <canvas id="glibcanvas"></canvas>
+  <div id="options">
+    <div class="slidecontainer" id="form">
+    </div><br><br><br>
+  </div>
+  <div id="legend"><p>Un exemple de Dave Briccetti que vous pouvez retrouver dans ce dépôt <a href="https://github.com/dcbriccetti/web-games" target="_blank">Github</a>, accompagné de plusieurs autres exemples intéressants ("cube to sphere", "clocks", etc..).</p>
+    <p>ATTENTION : cette adaptation à ProcessingJS du sketch de Dave Briccetti, ne fonctionne pas correctement. Ce bug non résolu m'a obligé à placer une fonction "noLoop()" à la fin de la fonction "draw()".
+    Ce bug est-il dû à une saturation de la pile d'appel pour les fonctions pushMatrix() et popMatrix() ? Une autre approche est peut être nécessaire pour ProcessingJS. </p>
+   </div>
+   <script src="sketch26_pjs.js"></script>
+        <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+</body>
+</html>

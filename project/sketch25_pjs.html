@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fractal Menger Sponge</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+  <script src="jstools/addslider.js"></script>
+</head>
+<body>
+  <canvas id="glibcanvas"></canvas>
+  <section class="controls">
+	<h2>Controls</h2>
+	<p>Rotate:</p>
+	<label><input type="radio" name="rotate" value="manual"> Manual (drag with mouse or finger)</label>
+	<label><input type="radio" name="rotate" value="auto" checked="checked"> Automatic</label>
+	<p>order:</p>
+	<label><input type="radio" name="order" value="1"> Order 1</label>
+	<label><input type="radio" name="order" value="2" checked="checked"> Order 2</label>
+	<label><input type="radio" name="order" value="3"> Order 3</label>
+  <p>Style:</p>
+  <label><input type="radio" name="style" value="1"> Wireframe </label>
+	<label><input type="radio" name="style" value="2" checked="checked"> Filled </label>
+</section><br><br>
+  <div id="legend">Vous voyez ici une version ProcessingJS du sketch de Frido Verweij dont la version originale (sous P5) est visible sur <a href="https://library.fridoverweij.com/codelab/menger_fractals/menger_sponge_p5.html" target="_blank">ce site</a>.
+    Je vous invite à le visiter, vous y trouverez plein d'autres sketchs intéressants pour P5, ainsi que des adaptations pour ThreeJS ou encore X3Dom.<br>
+    Dans la version ProcessingJS, j'ai ajouté la possibilité de voir la structure en mode filaire (parce que c'est fun).
+  <div id="current_mode"></div>
+   <script src="sketch25_pjs.js"></script>
+        <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+</body>
+</html>

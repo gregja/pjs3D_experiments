@@ -13,3 +13,6 @@ Pour les tests relatifs à la 3D, j'ai repris et adapté plusieurs sketchs tiré
 
 Lien vers le "Pomax Guide" :
 http://processingjs.org/articles/PomaxGuide.html
+
+Ce projet est dédié à mes amis du meetup CreativeCodeParis, et à tous les amoureux de creative coding.
+https://www.meetup.com/fr-FR/CreativeCodeParis/
