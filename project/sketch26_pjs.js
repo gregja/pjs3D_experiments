@@ -9,28 +9,9 @@ var pjs = function( dom_canvas ) {
     let speedSlider;
     let boxSizeSlider;
     let rotAngle = 0;
-    let edgeLength = 0;
     let maxOffset = width / 2;
 
     var data_form = {};  // store live parameters (attached to form fields)
-
-    function colorPart(offset) {
-        return pjs.map(offset, -maxOffset, maxOffset, 0, 255)
-    }
-
-    function forRange(fn) {
-        let cubeSpacing = parseInt(data_form['pjs_size']) * 1.2;
-        for (let arg = -maxOffset; arg <= maxOffset; arg += cubeSpacing) {
-            fn(arg);
-        }
-    }
-
-    function setNextRotationChange() {
-        let rpm = parseInt(data_form['pjs_rpm']);
-        let rps = rpm / 60.0;
-        let rpFrame = rps / (pjs.frameCount === 1 ? 1 : pjs.frameRate());
-        rotAngle = (rotAngle + rpFrame * pjs.TWO_PI) % pjs.TWO_PI;
-    }
 
     var slider_callback = function (self) {
       data_form[self.id] = parseInt(self.value);
@@ -52,6 +33,24 @@ var pjs = function( dom_canvas ) {
     }
 
     pjs.draw = function() {
+        function colorPart(offset) {
+            return pjs.map(offset, -maxOffset, maxOffset, 0, 255)
+        }
+
+        function forRange(fn) {
+            let cubeSpacing = parseInt(data_form['pjs_size']) * 1.2;
+            for (let arg = -maxOffset; arg <= maxOffset; arg += cubeSpacing) {
+                fn(arg);
+            }
+        }
+
+        function setNextRotationChange() {
+            let rpm = parseInt(data_form['pjs_rpm']);
+            let rps = rpm / 60.0;
+            let rpFrame = rps / (pjs.frameCount === 1 ? 1 : pjs.frameRate());
+            rotAngle = (rotAngle + rpFrame * pjs.TWO_PI) % pjs.TWO_PI;
+        }
+
         pjs.background(255);
     //    pjs.lights();
 
@@ -62,19 +61,23 @@ var pjs = function( dom_canvas ) {
         pjs.rotateY(rotAngle);
         setNextRotationChange();
 
-        edgeLength = parseInt(data_form['pjs_size']);
+        let edgeLength = parseInt(data_form['pjs_size']);
 
         forRange(x => forRange(y => forRange(z => {
+            if (x == undefined || y == undefined || z == undefined) {
+                return false;
+            }
             pjs.pushMatrix();
             pjs.translate(x, y, z);
             pjs.fill(colorPart(x), colorPart(y), colorPart(z));
             pjs.box(edgeLength);
             pjs.popMatrix();
+            return false;
         })));
 
     //    pjs.popMatrix();
 
-        pjs.noLoop(); // un bug rencontré sur ce sketch (non résolu) m'a obligé à placer ici un arrêt de la boucle
+    //    pjs.noLoop(); // un bug rencontré sur ce sketch (non résolu) m'a obligé à placer ici un arrêt de la boucle
     }
 
     pjs.keyPressed = function() {

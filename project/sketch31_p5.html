@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Horloge 3D</title>
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/main.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.2/p5.js"></script>
+
+  </head>
+  <body>
+   <div id="glibcanvas"></div>
+   <div id="legend"><p>Un exemple de Dave Briccetti que vous pouvez retrouver dans ce dépôt <a href="https://github.com/dcbriccetti/web-games" target="_blank">Github</a>, accompagné de plusieurs autres exemples intéressants.</p>
+     <p>J'ai retravaillé la version de Dave pour séparer au maximum la mécanique de gestion de l'horloge, de la mécanique propre à P5. Cela m'a permis de porter ensuite plus facilement le code vers ProcessingJS. La conversion
+     vers ProcessingJS était particulièrement intéressante du fait que ProcessingJS n'a pas de primitive 3D de type cylindre. Cela
+   m'a obligé à employer une fonction "cylinder" directement inspirée du sketch "cylindres" (sketch11) qui se trouve dans le présent projet. Ma fonction "cylinder" n'étant pas parfaitement identique, j'ai dû jongler avec les rotations pour obtenir le même rendu que dans la version P5. C'était un exercice très intéressant.</p>
+    </div>
+
+    <div id="options">
+      <div class="slidecontainer" id="form">
+      </div><br><br><br>
+    </div>
+    <script src="sketch31_p5.js"></script>
+    <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+      <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+    </div>
+  </body>
+</html>

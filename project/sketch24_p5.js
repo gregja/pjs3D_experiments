@@ -5,9 +5,9 @@ var s = function( sketch ) {
     var cur_obj = 0;
 
     sketch.preload = function() {
-        obj3d[0] = sketch.loadModel('assets/shuttle.obj', true);
-        obj3d[1] = sketch.loadModel('assets/icosahedron.obj', true);
-        obj3d[2] = sketch.loadModel('assets/diamond.obj', true);
+        obj3d[0] = sketch.loadModel('assets/shuttle.obj.txt', true);
+        obj3d[1] = sketch.loadModel('assets/icosahedron.obj.txt', true);
+        obj3d[2] = sketch.loadModel('assets/diamond.obj.txt', true);
     }
 
     sketch.setup = function() {
