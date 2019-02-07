@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sphere 3D</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+  <script src="js/glutz.js"></script>
+</head>
+<body>
+  <script id="fragmentShader" type="x-shader/x-fragment">
+  precision mediump float;
+  #define ITERS 36
+  uniform float time;
+  uniform vec2 resolution;
+
+  vec2 R(vec2 p,float a) {
+  	return vec2( p.x*cos(a) + p.y*sin(a),
+  			    -p.x*sin(a) + p.y*cos(a));
+  }
+
+  float julia(vec2 c,vec2 c1, float max){
+  	float xx = c.x * c.x;
+  	float yy = c.y * c.y;
+  	float xy = c.x * c.y;
+  	float s = xx + yy;
+  	for (int i = ITERS;i>0;i--){
+  		c=vec2(xx - yy, xy + xy) + c1;
+  		xx = c.x * c.x;
+  		yy = c.y * c.y;
+  		xy = c.x * c.y;
+  		s = xx + yy;
+  		if(s>=max || i == 1)return float(ITERS - i)/float(ITERS);
+  	}
+  	return 0.0;
+  }
+
+  void main() {
+  	vec2 c0 = (gl_FragCoord.xy / resolution) - vec2(0.5,0.5);
+  	vec2 c  = R(c0, time * 0.002);
+  	float j = julia(c + cos(time/2.0) / 4.0,c + sin(time/3.0) * 0.7, 16.0);
+  	float r = j * sin(c.x+time * 1.5);
+  	float g = j * sin(c.y + time * 1.2+1.0);
+  	float b = j;
+  	gl_FragColor = vec4(r, g, b, 1.0);
+  }
+  </script>
+  <script id="vertexShader" type="x-shader/x-vertex">
+  attribute vec3 pos;
+
+  void main() {
+  	gl_Position=vec4(pos, 1.0);
+  }
+  </script>
+   <canvas id="glibcanvas"></canvas>
+  <div id="legend">ProcessingJS ne sait pas gérer les shaders de manière native, <br>
+    alors j'ai cherché un moyen simple de lui ajouter cette fonctionnalité. <br>
+    Cela n'a pas été facile. J'ai d'abord tenté de faire cohabiter ProcessingJS avec Regl, <br>
+    mais je n'y suis pas parvenu. J'ai ensuite découvert <a href="https://github.com/terabaud/hello-webgl" target="_blank">Glutz</a>, un petit framework WebGL<br>
+     développé par Lea Rosema. Peu intrusif, assez facile à mettre en oeuvre, la greffe a plutôt <br>
+     bien pris, entre Glutz et ProcessingJS, comme vous pouvez le constater. <br>
+     Je dois reconnaître que c'est un peu acrobatique, j'ai été obligé de court-circuiter <br>
+     la fonction "draw()" au profit d'une fonction spécifique, la fonction "scene()".<br>
+     C'est assez expérimental, mais ça fonctionne. Mais nous sommes des "creative coders", <br>
+     donc des "warriors", donc on a peur de rien ;).<br>
+     Et puis il y a une "cerise sur le gâteau", car Glutz apporte à ProcessingJS <br>
+     un support des shaders plus avancé que celui proposé par P5 (nativement).
+   </div>
+   <div id="options">
+     <div class="slidecontainer" id="form">
+     </div><br><br><br>
+   </div>
+   <script src="sketch41_pjs.js"></script>
+   <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+      <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+  </div>
+</body>
+</html>
