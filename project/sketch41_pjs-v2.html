@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Sphere 3D</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+  <script src="js/glutz2.js"></script>
+</head>
+<body>
+  <script id="fragmentShader" type="x-shader/x-fragment">
+  precision mediump float;
+  #define ITERS 36
+  uniform float time;
+  uniform vec2 resolution;
+
+  vec2 R(vec2 p,float a) {
+  	return vec2( p.x*cos(a) + p.y*sin(a),
+  			    -p.x*sin(a) + p.y*cos(a));
+  }
+
+  float julia(vec2 c,vec2 c1, float max){
+  	float xx = c.x * c.x;
+  	float yy = c.y * c.y;
+  	float xy = c.x * c.y;
+  	float s = xx + yy;
+  	for (int i = ITERS;i>0;i--){
+  		c=vec2(xx - yy, xy + xy) + c1;
+  		xx = c.x * c.x;
+  		yy = c.y * c.y;
+  		xy = c.x * c.y;
+  		s = xx + yy;
+  		if(s>=max || i == 1)return float(ITERS - i)/float(ITERS);
+  	}
+  	return 0.0;
+  }
+
+  void main() {
+  	vec2 c0 = (gl_FragCoord.xy / resolution) - vec2(0.5,0.5);
+  	vec2 c  = R(c0, time * 0.002);
+  	float j = julia(c + cos(time/2.0) / 4.0,c + sin(time/3.0) * 0.7, 16.0);
+  	float r = j * sin(c.x+time * 1.5);
+  	float g = j * sin(c.y + time * 1.2+1.0);
+  	float b = j;
+  	gl_FragColor = vec4(r, g, b, 1.0);
+  }
+  </script>
+  <script id="vertexShader" type="x-shader/x-vertex">
+  attribute vec3 pos;
+
+  void main() {
+  	gl_Position=vec4(pos, 1.0);
+  }
+  </script>
+   <canvas id="glibcanvas"></canvas>
+  <div id="legend">Voici la version 2 du <a href="sketch41_pjs-v1.html">sketch combinant ProcessingJS et Glutz</a>. <br>
+    Dans cette seconde version, j'utilise une version remaniée de Glutz, dans laquelle l'ensemble des fonctions sont <br>
+    regroupées dans un objet (que j'ai appelé Glutz2). L'objectif est de faciliter l'intégration de Glutz dans des projets<br>
+    plus complexes, en éliminant les risques de collision par rapport aux noms de fonctions.
+   </div>
+   <div id="options">
+     <div class="slidecontainer" id="form">
+     </div><br><br><br>
+   </div>
+   <script src="sketch41_pjs-v2.js"></script>
+   <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+      <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
+  </div>
+</body>
+</html>

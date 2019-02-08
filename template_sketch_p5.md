@@ -10,9 +10,15 @@ var s = function( sketch ) {
     var mid_width = 400;  // it's often very useful to know the coordinates of the center of the canvas
     var mid_height = 300; // it's often very useful to know the coordinates of the center of the canvas
 
+    var ctx = null; // pointer to the 2D context of P5 (to declare only if you need it)
+    var gl  = null; // pointer to the 3D context of P5 (to declare only if you need it)
+
     sketch.setup = function() {
         let c = sketch.createCanvas(mid_width * 2, mid_height * 2, sketch.WEBGL);
         c.parent('#glibcanvas'); // necessary to fix the canvas where you want into the DOM
+
+        ctx = sketch.drawingContext;  // hook to the 2D context (only if you don't use WEBGL)
+        gl  = sketch._renderer.GL;   // hook to the 3D context (only if you use WEBGL)
 
         // put your code here
 

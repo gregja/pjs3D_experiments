@@ -54,24 +54,21 @@
   }
   </script>
    <canvas id="glibcanvas"></canvas>
-  <div id="legend">ProcessingJS ne sait pas gérer les shaders de manière native, <br>
-    alors j'ai cherché un moyen simple de lui ajouter cette fonctionnalité. <br>
-    Cela n'a pas été facile. J'ai d'abord tenté de faire cohabiter ProcessingJS avec Regl, <br>
-    mais je n'y suis pas parvenu. J'ai ensuite découvert <a href="https://github.com/terabaud/hello-webgl" target="_blank">Glutz</a>, un petit framework WebGL<br>
-     développé par Lea Rosema. Peu intrusif, assez facile à mettre en oeuvre, la greffe a plutôt <br>
-     bien pris, entre Glutz et ProcessingJS, comme vous pouvez le constater. <br>
-     Je dois reconnaître que c'est un peu acrobatique, j'ai été obligé de court-circuiter <br>
-     la fonction "draw()" au profit d'une fonction spécifique, la fonction "scene()".<br>
-     C'est assez expérimental, mais ça fonctionne. Mais nous sommes des "creative coders", <br>
-     donc des "warriors", donc on a peur de rien ;).<br>
-     Et puis il y a une "cerise sur le gâteau", car Glutz apporte à ProcessingJS <br>
-     un support des shaders plus avancé que celui proposé par P5 (nativement).
+  <div id="legend">ProcessingJS ne sait pas gérer nativement les shaders, alors je l'ai couplé avec <a href="https://github.com/terabaud/hello-webgl" target="_blank">Glutz</a>, <br>
+    une librairie légère et peu intrusive, développée par Lea Rosema.<br>
+    Grâce à Glutz, ProcessingJS sait gérer les shaders, comme vous pouvez le constater dans cet exemple.<br>
+    Pour que cela fonctionne, j'ai été obligé de court-circuiter la fonction "draw()" au profit d'une boucle pilotée <br>
+    par une fonction distincte, ceci pour éviter que Glutz et ProcessingJS n'entrent en conflit. <br>
+    C'est un peu acrobatique, mais ça marche.<br>
+    Glutz fournit un jeu de fonctions distinctes, avec un style d'écriture un peu "lazy", comme le précise Lea dans son code. <br>
+    Pour cloisonner Glutz et éviter qu'il ne pollue l'environnement Windows, j'ai créé une version spécifique - que j'ai appelée Glutz2 - version <br>
+    qui a pour particularité de regrouper l'ensemble des fonctions dans un objet. Vous pouvez tester cette seconde version en <br> cliquant <a href="sketch41_pjs-v2.html">ici</a> (à vous de choisir la version que vous préférez).
    </div>
    <div id="options">
      <div class="slidecontainer" id="form">
      </div><br><br><br>
    </div>
-   <script src="sketch41_pjs.js"></script>
+   <script src="sketch41_pjs-v1.js"></script>
    <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
       <br><br><a href="index_3d.html" class="button button-green">Retour au Labo 3D</a><br><br>
   </div>

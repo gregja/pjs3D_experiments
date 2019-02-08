@@ -40,7 +40,7 @@ var sketch = function( dom_canvas ) {
     	gl.clearColor(1/5, 1/5, 1/5, 1);
     	gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
-        // on peut utiliser certains fonctions de ProcessingJS (fonctions mathématiques, vertexs, etc...) et c'est cool,
+        // on peut utiliser certains fonctions de ProcessingJS (fonctions mathématiques, vertexs, etc...) et c'est cool, 
         // mais attention, l'association entre Glutz et ProcessingJS est très expérimentale et sans garantie ;)
         // console.log(pjs.mouseX);
 

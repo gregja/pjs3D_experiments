@@ -17,8 +17,12 @@ var sketch = function( dom_canvas ) {
     var mid_width = 400;  // it's often very useful to know the coordinates of the center of the canvas
     var mid_height = 300; // it's often very useful to know the coordinates of the center of the canvas
 
+    var ctx = null; // pointer to the 2D and 3D context of ProcessingJS (to declare only if you need it)
+
     pjs.setup = function() {
         pjs.size(mid_width * 2, mid_height * 2, pjs.P3D);
+
+        ctx = pjs.externals.context; // hook to the 2D and 3D context (only if you use WEBGL)
 
         // put your code here
 

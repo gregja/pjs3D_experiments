@@ -1,9 +1,13 @@
 # pjs3D_experiments
-Objectif : tester la portabilité de code Processing vers ProcessingJS (en particulier la 3D et le support de WebGL)
+Objectif : tester la portabilité de code Processing vers ProcessingJS et P5js
 
-Le but de ce projet est de tester la portabilité de sketch Processing vers ProcessingJS et P5js.
+Si le portage de sketchs 2D de Processing vers ProcessingJS et/ou P5js ne pose
+généralement pas de grande difficulté, le portage de sketchs 3D est plus problématique.
 
-Priorité a été donnée au test de sketchs utilisant un rendu 3D vers WebGL. Les résultats obtenus sont très encourageants, et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent comment porter ces projets sur le web.
+Priorité a donc été donnée à la conversion de sketchs Processing utilisant un rendu 3D (P3D ou OPENGL) vers WebGL.
+Même si j'ai rencontré quelques difficultés ponctuelles - plutôt du côté de P5 que de ProcessingJS -
+les résultats obtenus sont très encourageants, et devraient faire plaisir à tous
+ceux qui ont développé des projets 3D avec Processing, et se demandent comment les porter sur le web.
 
 Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une "pure JS library", comme expliqué à la fin du "Pomax Guide" (cf. lien ci-dessous). Cette technique nous amène à un code plus verbeux, car il faut préfixer (avec le code de son choix) toutes les fonctions et constantes de ProcessingJS, mais cela permet d'obtenir un meilleur contrôle sur le déroulement du sketch, et ainsi de l'intégrer au sein d'applications plus complexes.
 Mais vous pouvez utiliser ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
@@ -15,7 +19,7 @@ Vous trouverez dans ce même dépôt deux templates, que vous pourrez réutilise
 - template_sketch_pjs.MD : squelette de sketch pour ProcessingJS
 - template_sketch_p5.MD : squelette de sketch pour P5
 
-ATTENTION : pour faire fonctionner le projet, téléchargez le localement et ouvrez la page index.html (qui se trouve dans le répertoire "project") avec votre navigateur. Cette page est le point d'entrée vers les différents exemples.
+Pour faire fonctionner ce projet, téléchargez le localement et ouvrez la page index.html (qui se trouve dans le répertoire "project") avec votre navigateur. Cette page est le point d'entrée vers les différents exemples.
 
 Pour certains des tests relatifs à la 3D, j'ai repris et adapté des sketchs Processing tirés de livres dont les références sont indiquées au cas par cas. Les sketchs pour lesquels je n'ai pas indiqué de référence sont pour la
 plupart empruntés aux sites officiels (de Processing, ProcessingJS ou P5js). Pour tous les autres, je me suis efforcé d'indiquer mes sources au cas par cas. J'espère n'avoir oublié personne.
