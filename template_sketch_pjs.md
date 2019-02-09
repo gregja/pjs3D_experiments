@@ -1,9 +1,11 @@
 
 Put a CANVAS tag in your HTML page, like in the example below :
+```html
         <canvas id="glibcanvas"></canvas>
+```
 
 Template for a ProcessingJS sketch :
-
+```javascript
 var sketch = function( dom_canvas ) {
     "use strict";
 
@@ -60,3 +62,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log("Kickstart the sketch when the DOM is ready (best practice)");
     sketch('glibcanvas');  // use the same ID you declared in the HTML page
 });
+```

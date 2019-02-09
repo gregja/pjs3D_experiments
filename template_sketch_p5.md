@@ -1,9 +1,12 @@
 
 Put a DIV tag in your HTML, like in the example below :
+```html
      <div id="glibcanvas"></div>
+```
 
 Template for a P5 sketch :
 
+```javascript
 var s = function( sketch ) {
     "use strict";
 
@@ -51,3 +54,4 @@ var s = function( sketch ) {
       console.log("Kickstart the sketch when the DOM is ready (best practice)");
       var myp5 = new p5(s);
   });
+```
