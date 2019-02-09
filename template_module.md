@@ -21,50 +21,50 @@ var myModule = (function () {
   const cos = Math.cos;
   const tan = Math.tan;
   const sqrt = Math.sqrt;
-	const PI = Math.PI;
+  const PI = Math.PI;
 
-	// Examples of variables inner the object
-	var example1 = 'hello';
-	var example2 = 'world';
-	var datas = [];
+  // Examples of variables inner the object
+  var example1 = 'hello';
+  var example2 = 'world';
+  var datas = [];
 
-	// Examples of functions
-	function deg2rad(deg) {
-	   return deg * Math.PI / 180;
-	}
+  // Examples of functions
+  function deg2rad(deg) {
+     return deg * Math.PI / 180;
+  }
 
   function fnc1() {
-		// example of
-		let xx = privatefnc1(90);
-		console.log("radians for 90 degrees : " + xx);
+    // example of
+    let xx = privatefnc1(90);
+    console.log("radians for 90 degrees : " + xx);
   }
 
   function fnc2() {
-		console.log(example1 + ' ' + example2);
+    console.log(example1 + ' ' + example2);
   }
 
   function fncX() {
-		// add you code here
-		console.log("my internal name is fncX, sh..., it's a secret ;)");
+    // add you code here
+    console.log("my internal name is fncX, sh..., it's a secret ;)");
   }
 
   function init() {
-		// init function if you need it
+    // init function if you need it
   }
 
-	function storeData(data) {
-		datas.push(data);
-		return true;
-	}
+  function storeData(data) {
+    datas.push(data);
+    return true;
+  }
 
-	function getDatas() {
-		return datas;
-	}
+  function getDatas() {
+    return datas;
+  }
 
-	function privatefnc1(deg) {
-		// example of private function (called by fnc1)
-		return deg2rad(deg); // example of use of an private function
-	}
+  function privatefnc1(deg) {
+    // example of private function (called by fnc1)
+    return deg2rad(deg); // example of use of an private function
+  }
 
   // Declare here public functions and constants (the items not declared here are private)
   return {
@@ -72,9 +72,9 @@ var myModule = (function () {
     fnc1: fnc1,
     fnc2: fnc2,
     fnc3: fncX,
-		PI: PI,
-		storeData: storeData,
-		getDatas: getDatas
+    PI: PI,
+    storeData: storeData,
+    getDatas: getDatas
   };
 })();
 ```
