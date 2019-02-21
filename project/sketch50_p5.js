@@ -1,7 +1,7 @@
 var s = function( sketch ) {
     "use strict";
 
-    class Stage {
+    class TetrisStage {
         constructor(us, sw, sh, adjustX, colors) {
             this.us = us; // size of a block in pixels (square)
             this.sw = sw; // blocks on stage horizontally
@@ -69,7 +69,7 @@ var s = function( sketch ) {
         }
     }
 
-    class Block {
+    class TetrisBlock {
         constructor (gr, stage) {
             this.gr = gr;
             this.w = this.gr[0].length;
@@ -194,7 +194,7 @@ var s = function( sketch ) {
                   [0,255,255]
               ];
 
-    var stage = new Stage(30, 12, 21, 0, bcolors);
+    var stage = new TetrisStage(30, 12, 21, 0, bcolors);
     var block = {}; // current block with dimensions (w, h), coordinates (x, y) and shape (gr)
 
     sketch.setup = function(){
@@ -293,7 +293,7 @@ var s = function( sketch ) {
 
     function generate_block(){
         let item = Math.floor(sketch.random(max_shapes));
-        block = new Block(blocks[item], stage);
+        block = new TetrisBlock(blocks[item], stage);
 
         if(!block.hasSpace(block.x, block.y)){
             stage.gameOver();
