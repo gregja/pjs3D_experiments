@@ -4,7 +4,7 @@ Objectif : tester la portabilité de code Processing vers ProcessingJS et P5js
 Dans le dépôt ci-dessous, j'avais présenté différents scénarions de migration de sketch Processing vers P5js :
 https://github.com/gregja/p5Migration
 
-Je ne m'étais intéressé à l'époque qu'à P5js (et pas à ProcessingJS) et surtout je m'étais focalisé sur le portage de sketchs 2D, laissant complètement de côté le problème 3D. Je me suis efforcé de combler ces lacunes au travers du présent dépôt.
+Je ne m'étais intéressé à l'époque qu'à P5js (et pas à ProcessingJS) et surtout je m'étais focalisé sur le portage de sketchs 2D, laissant complètement de côté le problème de la 3D. Je me suis efforcé de combler ces lacunes au travers du présent dépôt.
 
 Donc même si j'ai converti quelques sketchs 2D, histoire de comparer ProcessingJS et P5js dans ce domaine, je me suis surtout focalisé sur la conversion de sketchs Processing utilisant un rendu 3D (P3D ou OPENGL) vers WebGL.
 
