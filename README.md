@@ -1,13 +1,14 @@
 # pjs3D_experiments
 Objectif : tester la portabilité de code Processing vers ProcessingJS et P5js
 
-Si le portage de sketchs 2D de Processing vers ProcessingJS et/ou P5js ne pose
-généralement pas de grande difficulté, le portage de sketchs 3D est plus problématique.
+Dans le dépôt ci-dessous, j'avais présenté différents scénarions de migration de sketch Processing vers P5js :
+https://github.com/gregja/p5Migration
 
-Priorité a donc été donnée à la conversion de sketchs Processing utilisant un rendu 3D (P3D ou OPENGL) vers WebGL.
-Même si j'ai rencontré quelques difficultés ponctuelles - plutôt du côté de P5 que de ProcessingJS -
-les résultats obtenus sont très encourageants, et devraient faire plaisir à tous
-ceux qui ont développé des projets 3D avec Processing, et se demandent comment les porter sur le web.
+Je ne m'étais intéressé à l'époque qu'à P5js (et pas à ProcessingJS) et surtout je m'étais focalisé sur le portage de sketchs 2D, laissant complètement de côté le problème 3D. Je me suis efforcé de combler ces lacunes au travers du présent dépôt.
+
+Donc même si j'ai converti quelques sketchs 2D, histoire de comparer ProcessingJS et P5js dans ce domaine, je me suis surtout focalisé sur la conversion de sketchs Processing utilisant un rendu 3D (P3D ou OPENGL) vers WebGL.
+
+Même si j'ai rencontré quelques difficultés ponctuelles - plutôt du côté de P5 que de ProcessingJS - les résultats obtenus sont très encourageants, et devraient faire plaisir à tous ceux qui ont développé des projets 3D avec Processing, et se demandent comment les porter sur le web (c'est notamment le cas de certains membres du meetup CreativeCodeParis). 
 
 Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une "pure JS library", comme expliqué à la fin du "Pomax Guide" (cf. lien ci-dessous). Cette technique nous amène à un code plus verbeux, car il faut préfixer (avec le code de son choix) toutes les fonctions et constantes de ProcessingJS, mais cela permet d'obtenir un meilleur contrôle sur le déroulement du sketch, et ainsi de l'intégrer au sein d'applications plus complexes.
 Mais vous pouvez utiliser ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
