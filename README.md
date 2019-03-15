@@ -25,7 +25,7 @@ Pour faire fonctionner ce projet, téléchargez le localement et ouvrez la page 
 Pour certains des tests relatifs à la 3D, j'ai repris et adapté des sketchs Processing tirés de livres dont les références sont indiquées au cas par cas. Les sketchs pour lesquels je n'ai pas indiqué de référence sont pour la
 plupart empruntés aux sites officiels (de Processing, ProcessingJS ou P5js). Pour tous les autres, je me suis efforcé d'indiquer mes sources au cas par cas. J'espère n'avoir oublié personne.
 
-Il faut souligner que ces tests ont été effectués entre janvier et février 2019, avec les versions 0.7.2 de P5 et 1.4.8 de ProcessingJS. Ce dernier propose un support très complet de la 3D proposée par Processing, mais P5 ne s'en sort pas trop mal non plus, et il sera intéressant de surveiller l'évolution de ces deux frameworks.
+Il faut souligner que ces tests ont été effectués entre janvier et février 2019, avec les versions 0.7.2 de P5 et 1.6.6 de ProcessingJS. Ce dernier propose un support très complet de la 3D proposée par Processing, mais P5 ne s'en sort pas trop mal non plus, et il sera intéressant de surveiller l'évolution de ces deux frameworks.
 
 IMPORTANT : j'ai patché le code source de la version de ProcessingJS utilisée dans ce projet, de manière à utiliser l'API WEBGL2 en priorité sur WEBGL (si disponible dans le navigateur), avec antialiasing actif par défaut. Le patch se trouve dans le fichier processing-patch.js (cf. fonction "getGLContext"). Cela explique pourquoi vous obtiendrez généralement un meilleur rendu avec ProcessingJS, qui se paiera parfois par une moindre fluidité. Je n'ai pas tenté d'appliquer ce même patch dans P5, mais je pense que c'est techniquement possible.
 
