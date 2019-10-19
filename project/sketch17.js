@@ -24,9 +24,14 @@ var sketch = function( dom_canvas ) {
     var vertx = [];
     var verty = [];
 
+    var shapes3d = {};
+    shapes3d.top    = {vertices:[], normals:[]};
+    shapes3d.bottom = {vertices:[], normals:[]};
+
     // what to do when an event "change" is triggered on a field form
     var slider_callback = function (self) {
       data_form[self.id] = self.value;
+       initPoints();
       return null;
     }
 
@@ -67,11 +72,30 @@ var sketch = function( dom_canvas ) {
                 verty[h][a] = pjs.sin( pjs.radians( a*5.0 )) * r;
             }
         }
+        for ( let h = 1; h < max_tri_strips; h++) {
+            for ( let a = 0; a <= max_vertices; a++ ) {
+                let aa = a % max_vertices;
+
+                shapes3d.top.normals.push({x:vertx[h][aa], y:0, z:verty[h][aa]});
+                shapes3d.top.vertices.push({x:vertx[h][aa], y:h*5.0, z:verty[h][aa]});
+
+                shapes3d.top.normals.push({x:vertx[h-1][aa], y:0, z:verty[h-1][aa]});
+                shapes3d.top.vertices.push({x:vertx[h-1][aa], y:(h-1)*5.0, z:verty[h-1][aa]});
+
+            }
+        }
+        let h = max_tri_strips - 1;
+        shapes3d.bottom.vertices.push({x:0, y:h*5, z:0});
+        for ( let a = 0; a <= max_vertices; a++ ) {
+            let aa = a % max_vertices;
+            shapes3d.bottom.vertices.push({x:vertx[h][aa], y:h*5, z:verty[h][aa]});
+        }
     }
 
     pjs.setup = function(){
         pjs.size( max_width, max_height, pjs.P3D );
         pjs.frameRate(60);
+        initPoints();
     }
 
     pjs.draw = function() {
@@ -89,27 +113,21 @@ var sketch = function( dom_canvas ) {
         pjs.translate(0, -50, 0);
         pjs.fill( formcolor.rouge, formcolor.vert, formcolor.bleu );
 
-        initPoints();
-
         pjs.beginShape(pjs.TRIANGLE_STRIP );
-        for ( let h = 1; h < max_tri_strips; h++) {
-            for ( let a = 0; a <= max_vertices; a++ ) {
-                let aa = a % max_vertices;
-                pjs.normal( vertx[h][aa],   0,           verty[h][aa]);
-                pjs.vertex( vertx[h][aa],   h*5.0,       verty[h][aa] );
-                pjs.normal( vertx[h-1][aa], 0,           verty[h-1][aa]);
-                pjs.vertex( vertx[h-1][aa], (h-1)*5.0,   verty[h-1][aa] );
-            }
-        }
+        shapes3d.top.vertices.forEach((vertex, idx) => {
+          //let normal;
+          //normal = shapes3d.top.normals[idx];
+          //pjs.normal(normal.x, normal.y, normal.z);
+          pjs.vertex(vertex.x, vertex.y, vertex.z);
+        });
+
         pjs.endShape();
 
+
         pjs.beginShape(pjs.TRIANGLE_FAN);
-        let h = max_tri_strips - 1;
-        pjs.vertex( 0, h*5, 0 );
-        for ( let a = 0; a <= max_vertices; a++ ) {
-            let aa = a % max_vertices;
-            pjs.vertex( vertx[h][aa], h*5, verty[h][aa] );
-        }
+        shapes3d.bottom.vertices.forEach(vertex => {
+          pjs.vertex( vertex.x, vertex.y, vertex.z );
+        });
         pjs.endShape();
 
         pjs.popMatrix();
