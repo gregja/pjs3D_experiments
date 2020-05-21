@@ -1,6 +1,8 @@
 # pjs3D_experiments
 Objectif : tester la portabilité de code Processing vers ProcessingJS et P5js
 
+Site démo de ce projet : http://ledefrichoir.com/labo/pjs3dXperiments/
+
 Dans le dépôt ci-dessous, j'avais présenté différents scénarions de migration de sketch Processing vers P5js :
 https://github.com/gregja/p5Migration
 

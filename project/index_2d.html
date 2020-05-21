@@ -1,37 +1,135 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Expériences 2D avec ProcessingJS et P5js</title>
-  <link rel="stylesheet" href="css/w3.css">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="js/processing-patch.js"></script>
+    <meta charset="UTF-8">
+    <title>Expériences 2D avec ProcessingJS et P5js</title>
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/processing-patch.js"></script>
 </head>
 <body>
 <div class="w3-container w3-blue">
-     <h2>Expériences 2D avec ProcessingJS et P5js</h2>
- </div>
- <div class="w3-container">
-     <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
-       <br>
-             <h2> Labo 2D </h2>
-             <ul>
-               <li>Sinusoïdes : <a href="sketch01.html">version ProcessingJS</a></li>
-               <li>Course de carrés v1 : <a href="sketch02.html">version Java (PDE)</a> + interaction avec des éléments du DOM via Javascript</li>
-               <li>Course de carrés v2 : <a href="sketch03.html">version ProcessingJS "full JS"</a></li>
-               <li>SpinArm & SpinSpots : <a href="sketch04.html">version ProcessingJS</a></li>
-               <li>Processing & D3 (+ hack du contexte 2D) : <a href="sketch20_pjs.html">version ProcessingJS</a>, <a href="sketch20_p5.html">version P5js</a>,  <a href="https://bl.ocks.org/mbostock/3231307" target="_blank">version originale</a></li>
-               <li>Sphère sans WebGL : <a href="sketch32_pjs.html">version ProcessingJS</a>, <a href="sketch32_p5.html">version P5js</a></li>
-               <li>Modèle de feu de forêt : <a href="sketch42_pjs.html">version ProcessingJS</a></li>
-             </ul>
-             <br>
-             <a href="index.html" class="button button-green">Retour au menu</a><br><br>
-     </div>
- </div>
- <div class="w3-container">
-     <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
-       Ce labo 2D est juste un prétexte pour s'amuser un peu avec de la 2D, avant d'entrer dans le vif du sujet avec la 3D et WebGL.
-     </div>
+    <h2>Expériences 2D avec ProcessingJS et P5js</h2>
+</div>
+<div class="w3-container">
+    <div class="w3-panel w3-bottombar">
+        <br>
+        <div class="w3-panel">
+            Ce labo 2D est juste un prétexte pour s'amuser un peu avec de la 2D, avant d'entrer dans le vif du sujet...
+            la 3D.
+        </div>
+        <div class="flex-container" id="container"></div>
+
+        <script>
+            /*
+            // dataliste generated from the old index.html, with the code below :
+              var selection = document.querySelectorAll('a');
+              var datas = [];
+              for(let i=0; i<selection.length; i++ ) {
+                 let item = selection[i];
+                  let tmptitle = item.parentNode.innerText;
+                  let pos = tmptitle.search(':');
+                  let title = tmptitle.substring(0, pos);
+                  datas.push({
+                      path: item.getAttribute('href'),
+                      title: title.trim() + ' : ' + item.innerHTML,
+                      screenshot: "",
+                      tags: []
+                  })
+              }
+              console.log(JSON.stringify(datas));
+            */
+
+            var dataliste = [{
+                "path": "sketch01.html",
+                "title": "Sinusoïdes : version ProcessingJS",
+                "screenshot": "scr0100.PNG",
+                "tags": []
+            }, {
+                "path": "sketch02.html",
+                "title": "Course de carrés v1 : version Java (PDE)",
+                "screenshot": "scr0101.PNG",
+                "tags": []
+            }, {
+                "path": "sketch03.html",
+                "title": "Course de carrés v2 : version ProcessingJS \"full JS\"",
+                "screenshot": "scr0101.PNG",
+                "tags": []
+            }, {
+                "path": "sketch04.html",
+                "title": "SpinArm & SpinSpots : version ProcessingJS",
+                "screenshot": "scr0102.PNG",
+                "tags": []
+            }, {
+                "path": "sketch20_pjs.html",
+                "title": "Processing & D3 (+ hack du contexte 2D) : version ProcessingJS",
+                "screenshot": "scr0103.PNG",
+                "tags": []
+            }, {
+                "path": "sketch20_p5.html",
+                "title": "Processing & D3 (+ hack du contexte 2D) : version P5js",
+                "screenshot": "scr0104.PNG",
+                "tags": []
+            }, {
+                "path": "https://bl.ocks.org/mbostock/3231307",
+                "title": "Processing & D3 (+ hack du contexte 2D) : version originale",
+                "screenshot": "scr0105.PNG",
+                "tags": []
+            }, {
+                "path": "sketch32_pjs.html",
+                "title": "Sphère sans WebGL : version ProcessingJS",
+                "screenshot": "scr0106.PNG",
+                "tags": []
+            }, {
+                "path": "sketch32_p5.html",
+                "title": "Sphère sans WebGL : version P5js",
+                "screenshot": "scr0106.PNG",
+                "tags": []
+            }, {
+                "path": "sketch42_pjs.html",
+                "title": "Modèle de feu de forêt : version ProcessingJS",
+                "screenshot": "scr0107.PNG",
+                "tags": []
+            }];
+
+            function fillpage(list) {
+                "use strict";
+                let container = document.getElementById('container');
+
+                list.forEach(item => {
+                    let div = document.createElement('div');
+                    let a = document.createElement('a');
+                    a.setAttribute('href', item.path);
+                    a.setAttribute('title', item.title);
+                    let img = document.createElement('img');
+                    img.setAttribute('width', '200px');
+                    img.setAttribute('height', '200px');
+                    if (item.hasOwnProperty("screenshot") && item.screenshot != "") {
+                        img.src = "screenshots/" + item.screenshot;
+                    } else {
+                        img.src = "screenshots/default.png";
+                    }
+                    a.appendChild(img);
+                    div.appendChild(a);
+                    let p = document.createElement('p');
+                    p.innerHTML = item.title;
+                    div.appendChild(p);
+                    container.appendChild(div);
+                });
+
+            }
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+                fillpage(dataliste);
+            });
+
+        </script>
+        <br>
+        <a href="index.html" class="button button-green">Retour au menu</a><br><br>
+    </div>
+</div>
+<div class="w3-container">
+
 </div>
 </body>
 </html>

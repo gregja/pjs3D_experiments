@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Expériences 2D et 3D avec ProcessingJS et P5js</title>
+  <link rel="stylesheet" href="css/w3.css">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/processing-patch.js"></script>
+</head>
+<body>
+<div class="w3-container w3-blue">
+     <h2>Expériences 2D et 3D avec ProcessingJS et P5js</h2>
+ </div>
+ <div class="w3-container">
+
+     <div class="w3-panel w3-bottombar">
+       <p>
+       Le but de ce projet personnel et assez expérimental est de tester la portabilité de sketchs Processing
+       vers ProcessingJS et P5js. </p>
+       <p>
+         Pour être tout à fait exact, j'avais surtout envisagé de tester la portabilité de sketchs 3D vers ProcessingJS,
+         mais j'ai souhaité par la suite comparer ProcessingJS et P5js, ce qui m'a amené à dupliquer et adapter un certain
+         nombre de sketcks. Ceci explique en partie pourquoi tous les sketchs n'ont pas été convertis pour P5. Mais en
+         partie seulement, car j'ai aussi rencontré des difficultés liées à la manière dont P5 implémente WebGL.
+       </p>
+       <p>
+         Pour effectuer ces tests, j'ai choisi arbitrairement d'utiliser ProcessingJS comme une
+         "pure JS library", comme expliqué à la fin du
+          <a href="http://processingjs.org/articles/PomaxGuide.html" target="_blank">"Pomax Guide"</a>.
+         Cette technique nous amène à un code plus verbeux, car il faut préfixer (avec le code de son choix) toutes les fonctions
+         et constantes de
+         ProcessingJS, mais cela permet d'obtenir un meilleur contrôle sur le déroulement du sketch, et ainsi de pouvoir l'intégrer
+         plus facilement au sein d'applications complexes, si besoin.
+         Mais vous pouvez utiliser ProcessingJS de plusieurs façons, comme expliqué dans le "Pomax Guide", à vous de
+         trouver le mode qui vous convient le mieux.</p>
+         <p>
+         Pour les adaptations des sketchs sur P5, j'ai opté pour le même style d'écriture - que P5 propose également -
+           car c'était plus facile et rapide pour moi de procéder ainsi. Mais avec P5, vous pouvez opter pour un style plus
+           libre, qui est abondamment présenté au travers de la plupart des tutos officiels.
+       </p>
+       <p>
+         Vous trouverez dans ce même dépôt deux templates, que vous pourrez réutiliser si vous le souhaitez :<br>
+         - template_sketch_pjs.MD : squelette de sketch pour ProcessingJS<br>
+         - template_sketch_p5.MD : squelette de sketch pour P5
+       </p>
+       <p>Pour certains des tests relatifs à la 3D, j'ai repris et adapté des sketchs Processing tirés
+         de livres dont les références sont indiquées au cas par cas. Les sketchs pour lesquels je n'ai pas indiqué de référence sont pour la
+       plupart empruntés aux sites officiels (de Processing, ProcessingJS ou P5js). Pour tous les autres, je me suis efforcé
+         d'indiquer mes sources au cas par cas. J'espère n'avoir oublié personne.</p>
+       <p>J'ai créé ce projet de test entre janvier et février 2019, avec les versions 0.7.2 de P5 et 1.6.6 de ProcessingJS.</p>
+       <p>A l'issue de ces tests, je peux écrire que ProcessingJS offre globalement une meilleure compatibilité que P5 par rapport
+         aux fonctions 3D de Processing.
+       P5 a cependant quelques atouts dans sa manche, comme une fonction "loadModel" permettant d'importer des objets 3D, ainsi
+         qu'un support (limité) des shaders, plus quelques primitives 3D supplémentaires.
+     Mais le sketch "Sphere3D" (sketch18) montre clairement que ProcessingJS a de meilleures capacités pour la construction de
+         formes 3D complexes par programmation.
+     De plus, l'absence dans P5 des fonctions modelX, modelY, modelZ (cf. sketch 22) donne à ProcessingJS un sérieux avantage
+         pour la création de certains sketchs 3D complexes.</p>
+     <p>On ne peut pas dire à ce stade que l'un des deux frameworks (P5 ou ProcessingJS) soit réellement meilleur que l'autre.
+       Mais j'espère que ce projet vous aidera à cerner les limites de chaque solution, et à choisir celle qui vous convient le mieux.
+   </p>
+
+       <p>IMPORTANT : j'ai patché le code source de la version de ProcessingJS utilisée dans ce projet, de manière à utiliser
+         l'API WEBGL2 en priorité sur WEBGL (si disponible dans le navigateur), avec antialiasing actif par défaut.
+         Le patch se trouve dans le fichier processing-patch.js (cf. fonction "getGLContext"). Cela explique pourquoi
+         vous obtiendrez généralement un meilleur rendu avec ProcessingJS. Je n'ai pas tenté d'appliquer ce même patch
+         dans P5, mais je pense que c'est techniquement possible. <p>
+
+       <p><a href="index.html" class="button button-green">Retour au menu</a></p>
+     </div>
+
+ </div>
+
+</body>
+</html>

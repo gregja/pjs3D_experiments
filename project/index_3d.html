@@ -1,69 +1,272 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Expériences 3D avec ProcessingJS et P5js</title>
     <link rel="stylesheet" href="css/w3.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="js/processing-patch.js"></script>
-  </head>
-  <body>
-    <div class="w3-container w3-blue">
-      <h2>Expériences 3D avec ProcessingJS et P5js</h2>
-    </div>
-    <div class="w3-container">
-      <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
+</head>
+<body>
+<div class="w3-container w3-blue">
+    <h2>Expériences 3D avec ProcessingJS et P5js</h2>
+</div>
+<div class="w3-container">
+    <div class="w3-panel w3-bottombar ">
         <br>
         <h2> Labo 3D </h2>
 
-        <ul>
-          <li>Cubes fixes : <a href="sketch05.html">version ProcessingJS</a></li>
-          <li>Livre volant : <a href="sketch06.html">version ProcessingJS</a></li>
-          <li>4 cubes en mouvement : <a href="sketch07.html">version ProcessingJS</a></li>
-          <li>Primitives 3D : <a href="sketch08.html">version ProcessingJS</a></li>
-          <li>Lights & Textures 3D: <a href="sketch10.html">version ProcessingJS</a></li>
-          <li>Cylindres : <a href="sketch11.html">version ProcessingJS</a></li>
-          <li>Multicubes v1 (mixe carré 2D & cubes 3D) : <a href="sketch12.html">version ProcessingJS</a></li>
-          <li>Multicubes v2 (cubes 3D avec zoom) : <a href="sketch13.html">version ProcessingJS</a></li>
-          <li>Triangle & Quad strips : <a href="sketch14.html">version ProcessingJS</a></li>
-          <li>Camera 3D : <a href="sketch15.html">version ProcessingJS</a></li>
-          <li>Mapping de textures : <a href="sketch16.html">version ProcessingJS</a></li>
-          <li>Générateur de formes : <a href="sketch17.html">version ProcessingJS</a></li>
-          <li>Sphere 3D  : <a href="sketch18_pjs.html">version ProcessingJS</a>, <a href="sketch18_p5.html">version P5</a></li>
-          <li>Effet "lightDirectional" : <a href="sketch19_pjs.html">version ProcessingJS</a>, <a href="sketch19_p5.html">version P5</a></li>
-          <li>Generative Gestaltung M_1_4_01 : <a href="sketch21_pjs.html">version ProcessingJS</a>, <a href="http://www.generative-gestaltung.de/2/sketches/?02_M/M_1_4_01" target="_blank">version originale (P5)</a></li>
-          <!--       <li>Generative Gestaltung M_1_4_01 : <a href="sketch21_pjs.html">version ProcessingJS</a>, <a href="sketch21_p5.html" >version originale (P5)</a></li> -->
-          <li>Fonctions Processing modelX, modelY, modelZ : <a href="sketch22_pjs.html">version ProcessingJS</a></li>
-          <li>Fonctions Processing screenX, screenY, screenZ : <a href="sketch23_pjs.html">version ProcessingJS</a></li>
-          <li>Affichage d'un objet 3D avec extension OBJ : <a href="sketch24_pjs.html">version PJS</a>, <a href="sketch24_p5.html">version P5</a></li>
-          <li>Eponge de Menger : <a href="sketch25_pjs.html">version ProcessingJS</a>, <a href="https://library.fridoverweij.com/codelab/menger_fractals/menger_sponge_p5.html" target="_blank"> version originale P5</a></li>
-          <li>Polycubes : <a href="sketch26_p5.html">version P5</a></li>
-          <li>Morphing entre cube(s) & sphere : <a href="sketch27_pjs.html">version ProcessingJS</a>, <a href="sketch27_p5.html">version P5</a></li>
-          <li>Horloges 3D : <a href="sketch31_pjs.html">version ProcessingJS (avec Glutz)</a>, <a href="sketch31_p5.html">version P5</a></li>
-          <li>Terrain mouvant : <a href="sketch30_p5.html">version P5</a></li>
-          <li>Shaders : <a href="sketch41_pjs-v1.html">version ProcessingJS (avec Glutz)</a>, <a href="sketch40_p5.html">version P5</a></li>
-          <li>Tetris 3D : <a href="sketch50_pjs.html">version ProcessingJS</a>, <a href="sketch50_p5.html">version P5</a></li>
-          <li>Bonus (3 variantes d'un même cube modélisé de 3 façons différentes, pour PJS uniquement) : <a href="bonus/cube0.html">v0</a>, <a href="bonus/cube1.html">v1</a>, <a href="bonus/cube2.html">v2</a></li>
-        </ul>
+        <div class="flex-container" id="container"></div>
+
+        <script>
+            /*
+            // dataliste generated from the old index.html, with the code below :
+              var selection = document.querySelectorAll('a');
+              var datas = [];
+              for(let i=0; i<selection.length; i++ ) {
+                 let item = selection[i];
+                  let tmptitle = item.parentNode.innerText;
+                  let pos = tmptitle.search(':');
+                  let title = tmptitle.substring(0, pos);
+                  datas.push({
+                      path: item.getAttribute('href'),
+                      title: title.trim() + ' : ' + item.innerHTML,
+                      screenshot: "",
+                      tags: []
+                  })
+              }
+              console.log(JSON.stringify(datas));
+            */
+
+            var dataliste = [
+                {
+                    "path": "sketch05.html",
+                    "title": "Cubes fixes : version ProcessingJS",
+                    "screenshot": "scr0001.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch06.html",
+                    "title": "Livre volant : version ProcessingJS",
+                    "screenshot": "scr0002.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch07.html",
+                    "title": "4 cubes en mouvement : version ProcessingJS",
+                    "screenshot": "scr0003.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch08.html",
+                    "title": "Primitives 3D : version ProcessingJS",
+                    "screenshot": "scr0004.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch10.html",
+                    "title": "Lights & Textures 3D : version ProcessingJS",
+                    "screenshot": "scr0005.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch11.html",
+                    "title": "Cylindres : version ProcessingJS",
+                    "screenshot": "scr0006.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch12.html",
+                    "title": "Multicubes v1 (mixe carré 2D & cubes 3D) : version ProcessingJS",
+                    "screenshot": "scr0007.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch13.html",
+                    "title": "Multicubes v2 (cubes 3D avec zoom) : version ProcessingJS",
+                    "screenshot": "scr0008.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch14.html",
+                    "title": "Triangle & Quad strips : version ProcessingJS",
+                    "screenshot": "scr0009.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch15.html",
+                    "title": "Camera 3D : version ProcessingJS",
+                    "screenshot": "scr0010.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch16.html",
+                    "title": "Mapping de textures : version ProcessingJS",
+                    "screenshot": "scr0011.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch17.html",
+                    "title": "Générateur de formes : version ProcessingJS",
+                    "screenshot": "scr0012.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch18_pjs.html",
+                    "title": "Sphere 3D : version ProcessingJS",
+                    "screenshot": "scr0013.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch18_p5.html",
+                    "title": "Sphere 3D : version P5",
+                    "screenshot": "scr0014.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch19_pjs.html",
+                    "title": "Effet \"lightDirectional\" : version ProcessingJS",
+                    "screenshot": "scr0015.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch19_p5.html",
+                    "title": "Effet \"lightDirectional\" : version P5",
+                    "screenshot": "scr0016.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch21_pjs.html",
+                    "title": "Generative Gestaltung M_1_4_01 : version ProcessingJS",
+                    "screenshot": "scr0017.PNG",
+                    "tags": []
+                }, {
+                    "path": "http://www.generative-gestaltung.de/2/sketches/?02_M/M_1_4_01",
+                    "title": "Generative Gestaltung M_1_4_01 : version originale (P5)",
+                    "screenshot": "scr0018.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch22_pjs.html",
+                    "title": "Fonctions Processing modelX, modelY, modelZ : version ProcessingJS",
+                    "screenshot": "scr0019.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch23_pjs.html",
+                    "title": "Fonctions Processing screenX, screenY, screenZ : version ProcessingJS",
+                    "screenshot": "scr0020.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch24_pjs.html",
+                    "title": "Affichage d'un objet 3D avec extension OBJ : version PJS",
+                    "screenshot": "scr0021.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch24_p5.html",
+                    "title": "Affichage d'un objet 3D avec extension OBJ : version P5",
+                    "screenshot": "scr0022.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch25_pjs.html",
+                    "title": "Eponge de Menger : version ProcessingJS",
+                    "screenshot": "scr0023.PNG",
+                    "tags": []
+                }, {
+                    "path": "https://library.fridoverweij.com/codelab/menger_fractals/menger_sponge_p5.html",
+                    "title": "Eponge de Menger :  version originale P5",
+                    "screenshot": "scr0024.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch26_p5.html",
+                    "title": "Polycubes : version P5",
+                    "screenshot": "scr0025.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch27_pjs.html",
+                    "title": "Morphing entre cube(s) & sphere : version ProcessingJS",
+                    "screenshot": "scr0026.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch27_p5.html",
+                    "title": "Morphing entre cube(s) & sphere : version P5",
+                    "screenshot": "scr0027.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch31_pjs.html",
+                    "title": "Horloges 3D : version ProcessingJS (avec Glutz)",
+                    "screenshot": "scr0028.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch31_p5.html",
+                    "title": "Horloges 3D : version P5",
+                    "screenshot": "scr0029.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch30_p5.html",
+                    "title": "Terrain mouvant : version P5",
+                    "screenshot": "scr0030.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch41_pjs-v1.html",
+                    "title": "Shaders : version ProcessingJS (avec Glutz)",
+                    "screenshot": "scr0031.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch40_p5.html",
+                    "title": "Shaders : version P5",
+                    "screenshot": "scr0032.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch50_pjs.html",
+                    "title": "Tetris 3D : version ProcessingJS",
+                    "screenshot": "scr0033.PNG",
+                    "tags": []
+                }, {
+                    "path": "sketch50_p5.html",
+                    "title": "Tetris 3D : version P5",
+                    "screenshot": "scr0034.PNG",
+                    "tags": []
+                }, {
+                    "path": "bonus/cube0.html",
+                    "title": "Modélisation Cube variante 1 : version ProcessingJS",
+                    "screenshot": "scr0035.PNG",
+                    "tags": []
+                }, {
+                    "path": "bonus/cube1.html",
+                    "title": "Modélisation Cube variante 2 : version ProcessingJS",
+                    "screenshot": "scr0035.PNG",
+                    "tags": []
+                }, {
+                    "path": "bonus/cube2.html",
+                    "title": "Modélisation Cube variante 3 : version ProcessingJS",
+                    "screenshot": "scr0035.PNG",
+                    "tags": []
+                }
+            ];
+
+            function fillpage(list) {
+                "use strict";
+                let container = document.getElementById('container');
+
+                list.forEach(item => {
+                    let div = document.createElement('div');
+                    let a = document.createElement('a');
+                    a.setAttribute('href', item.path);
+                    a.setAttribute('title', item.title);
+                    let img = document.createElement('img');
+                    img.setAttribute('width', '200px');
+                    img.setAttribute('height', '200px');
+                    if (item.hasOwnProperty("screenshot") && item.screenshot != "") {
+                        img.src = "screenshots/" + item.screenshot;
+                    } else {
+                        img.src = "screenshots/default.png";
+                    }
+                    a.appendChild(img);
+                    div.appendChild(a);
+                    let p = document.createElement('p');
+                    p.innerHTML = item.title;
+                    div.appendChild(p);
+                    container.appendChild(div);
+                });
+
+            }
+
+            document.addEventListener("DOMContentLoaded", function (event) {
+                fillpage(dataliste);
+            });
+
+        </script>
+
         <br>
 
-        <div class="w3-panel w3-pale-green w3-bottombar w3-border-green w3-border">
-          <h4>Quelques documentations en ligne</h4>
-          <p>
-            <a href="https://processing.org/tutorials/p3d/" target="_blank">Introduction à la 3D avec Processing</a><br>
-            <a href="https://github.com/processing/p5.js/wiki/Getting-started-with-WebGL-in-p5" target="_blank">Introduction à l'utilisation de WebGL dans P5</a><br>
-            <a href="https://github.com/processing/p5.js/blob/master/developer_docs/webgl_mode_architecture.md" target="_blank">WEBGL mode architecture (P5)</a><br>
-            <a href="http://processingjs.org/articles/PomaxGuide.html" target="_blank">Pomax Guide (ProcessingJS)</a><br>
-            <a href="https://processing.org/tutorials/pshader/" target="_blank" >Shaders Tutorial (Processing)</a><br>
-       <a href="https://thebookofshaders.com/?lan=fr" target="_blank" >The book of shaders (VF)</a>
-
-          </p>
-        </div>
 
         <a href="index.html" class="button button-green">Retour au menu</a><br><br>
 
-      </div>
     </div>
+</div>
 
-  </body>
+</body>
 </html>
